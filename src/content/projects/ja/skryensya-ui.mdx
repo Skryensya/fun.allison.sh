@@ -1,0 +1,59 @@
+---
+name: 'Skryensya/ui'
+hook: 'すべてのコンポーネントが「契約」から始まるデザインシステム。ドキュメント、検証、ReactとVanillaの実装は、すべてその契約から生まれます。'
+cvDescription: 'すべてのコンポーネントが「契約」から始まるデザインシステム。ドキュメント、検証、ReactとVanillaの実装は、すべてその契約から生まれます。'
+publishDate: '2026-12-01'
+isFeatured: true
+---
+
+## アイデア
+
+<figure>
+  <img src="/img/projects/skryensya-ui-anatomia-accordion-en.png" alt="Accordionの構造:見本の上に番号付きの7つのパーツとそのクラス名。" loading="lazy" />
+  <figcaption>Accordionの構造 — すべてのパーツに名前とクラスがある</figcaption>
+</figure>
+
+Skryensya/uiは、契約から始めるデザインシステムです。どのコンポーネントも、CSSとJavaScriptをAPIで包んだものからではなく、定義、つまり契約から始まります。契約には、コンポーネントがどんなパーツを持つか、どんなオプションを受け取るか、どんな属性を書き出すか、満たすべきアクセシビリティのルール、そして意味のある組み合わせが書かれています。
+
+<figure>
+  <img src="/img/projects/skryensya-ui-anatomia-comment-thread-en.png" alt="CommentThreadの構造:返信付きのコメントの上に番号付きの9つのパーツとそのクラス名。" loading="lazy" />
+  <figcaption>CommentThreadの構造 — アバターから返信まで</figcaption>
+</figure>
+
+組織向けのシステムで混乱を抑える一般的な方法は、すべてのベンダーに単一のスタックを課すことです。理にかなっています。ばらつきが減り、共通の方針を保てるからです。ただ、同じ出発点にいるとは限らないチームに同じ技術的判断を強いることになり、選べるベンダーの幅が狭まり、組織のコストも上がります。私はこの緊張関係を別の形で解きたいと考えました。React、Vue、Vanillaを許しながら、並行する3つの実装を抱え込まないようにすることです。
+
+このアイデアは、本番環境でデザインシステムを作り、保守してきた経験から来ています。<a href="/ja/projects/kit-digital-uc" class="editorial-link">Kit Digital UC</a>、Portal UC、そしてまだ見せられない最近の組織向けプロジェクトです。技術的な入り口は<a href="https://zagjs.com" class="editorial-link" target="_blank" rel="noopener noreferrer">Zag.js</a>でした。振る舞いと見た目を分け、ステートマシンを使い、同じロジックを作り直すことなく各ランタイムに描画させるという考え方です。
+
+## おもしろいところ
+
+<figure>
+  <img src="/img/projects/skryensya-ui-componentes-en.png" alt="「コンポーネントを探す」ページ。カタログがタスクごとにまとめられている。" loading="lazy" />
+  <figcaption>カタログは、各パーツが解決するタスクごとに整理されている</figcaption>
+</figure>
+
+<a href="https://ui.skryensya.dev" class="editorial-link" target="_blank" rel="noopener noreferrer">ui.skryensya.dev</a>には、100を超えるコンポーネントが文書化されています。各ページには、契約、オプション、アクセシビリティのメモ、描画された例があります。実装はReactとVanillaの2つで、どちらも同じ定義から生まれ、同じ結果を出さなければなりません。
+
+<figure>
+  <img src="/img/projects/skryensya-ui-anatomia-button-en.png" alt="Buttonの構造:見本の上に番号付きの5つのパーツ。" loading="lazy" />
+  <figcaption>Buttonの構造 — ボックスとスロット</figcaption>
+</figure>
+
+アクセシビリティは初日から契約の一部にすると決めました。各コンポーネントは、必要なアクセシブルな名前、通知する状態、タッチターゲットの最小サイズを宣言します。そのため、これらのルールは各チームの記憶に頼らずに済みます。いくつかはテストで確認しています。すべてのバリアントとトーンのコントラストはライトモードとダークモードで4.5:1を計測し、モーションは視覚効果を減らす設定を尊重します。これほど違うチームが使うシステムでは、誰かの記憶に頼りたくありませんでした。
+
+<figure>
+  <img src="/img/projects/skryensya-ui-button-do-dont-en.png" alt="Buttonの良い例・悪い例のペア:1つの領域に主要なアクションは1つ。" loading="lazy" />
+  <figcaption>Button — 1つの領域に主要なアクションは1つ</figcaption>
+</figure>
+
+カタログは、MCPサーバーを通じて構造として問い合わせることもできます。どんなコンポーネントがあるか、どう組み合わさるか、どの組み合わせが有効か、どんなマークアップを出すべきかを尋ねられます。検証では、バインディングをまたいで利用ツリーを比較し、「ここは一貫しているはず」を証拠に変えます。
+
+## 現在の状態
+
+<figure>
+  <img src="/img/projects/skryensya-ui-tag-do-dont-en.png" alt="Tagの良い例・悪い例のペア:操作の対象になるもの。" loading="lazy" />
+  <figcaption>Tag — 取り除けるならTag、読むだけならBadge</figcaption>
+</figure>
+
+大きくて、意図的に野心的なWIPですが、すでに動く土台はあります。信頼できる唯一の情報源としてのCore、公開ドキュメント、ReactとVanillaの実装、一貫性を確かめるゲートです。次は、その同じ構造を、普通は別々に作られるものに使います。Figmaプラグイン、ビジュアルエディタ、そしてインターフェースをプログラムで検証するMCPです。
+
+[ui.skryensya.dev](https://ui.skryensya.dev)

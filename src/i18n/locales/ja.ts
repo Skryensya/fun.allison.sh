@@ -15,8 +15,8 @@ export const ja = {
     'home.cvButton': '履歴書を見る',
     'home.stats.location': '所在地',
     'home.stats.status': 'ステータス',
-    'hero.heading': 'こんにちは、Allisonです。サイトへようこそ',
-    'hero.description': '使いやすく、アクセシブルで、細部まで丁寧なウェブ体験を作っています。',
+    'hero.heading': '当たり前に感じられるものを作っています。',
+    'hero.description': 'デザインシステムや組織向けのプラットフォームに取り組み、好奇心から自分のツールも作っています。エッジケースとアクセシビリティは、最後に足すものではなく、最初から大切にしています。',
     'hero.cards.frontend.title': 'フロントエンド',
     'hero.cards.frontend.description': 'リアクト、タイプスクリプト、アストロ',
     'hero.cards.backend.title': 'バックエンド',
@@ -24,11 +24,10 @@ export const ja = {
     'hero.cards.design.title': 'デザイン',
     'hero.cards.design.description': 'ユーアイ／ユーエックス、フィグマ、プロトタイピング',
     'about.title': '私について',
-    'about.tldr': 'わかりやすくて使いやすいウェブ体験を、細部までこだわって作っています。',
+    'about.tldr': 'ものごとがどう動くのかを理解して、もう少し先まで持っていくのが好きです。作ること、繰り返すこと、単純にすることを楽しんでいます。デザインに本気で惹かれていて、近くで働くのが好きです。',
     'about.tldrLabel': '要約',
     'about.expanded': [
-        'この4年間、コンサルティングで大規模プロジェクトに携わってきました。たとえば <a href="/ja/projects/kit-digital-uc">Kit Digital UC</a> では、100以上のサイトで使われるデザインシステムの開発に参加。そこで、フロントエンドの土台づくりや、長く使えるプロダクト設計の考え方を深めました。',
-        '大切にしているのは、アクセシビリティとわかりやすさ、そしてオープンなコミュニケーションです。仕事以外では、ノルウェー語の勉強、チェス、音楽の探求、個人開発を続けています。このサイトも、その延長線上にある実験のひとつです。'
+        '仕事以外では、ノルウェー語を学んだり、チェスをしたり、音楽を探したりしています。個人のプロジェクトも、必要からというより好奇心から、ずっと作り続けています。このサイトは、その延長です。'
     ],
     'about.cta.message': 'ここまで読んで気になったら、気軽に連絡してください。',
     'about.cta.button': '話してみる',
@@ -37,7 +36,7 @@ export const ja = {
     'about.cta.copy.success': 'メールアドレスをコピーしました',
     'about.cta.copy.error': 'メールアドレスをコピーできませんでした',
     'about.viewMore.open': '続きを読む',
-    'site.description': 'Allison Peña のポートフォリオサイト。',
+    'site.description': '分かりやすく、アクセシブルで、速いウェブのインターフェースを設計し、作っています。システムと、体験を役立つものにする判断に関心があります。',
     'ui.loading': '読み込み中…',
     'theme.toast.unlocked': '{count}個の追加テーマを解放しました！',
     'theme.toast.locked': '追加テーマを次回までロックしました。',

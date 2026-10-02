@@ -1,40 +1,62 @@
 ---
 name: 'Kit Digital UC'
-hook: 'Jeg utviklet og optimaliserte Kit Digital UC, et bibliotek i Vanilla JavaScript som sikrer tilgjengelighet, konsistens og ytelse på mer enn 100 institusjonelle nettsteder.'
-cvDescription: 'Komponentbibliotek for nett ved Det pavelige katolske universitetet i Chile, den teknologiske ryggraden i det institusjonelle digitale økosystemet.'
-publishDate: '2025-05-20'
+hook: 'Et bibliotek brukt av over 100 UC-nettsteder, uten mulighet til å vite hvordan hvert enkelt bruker det. Jobben min var å forbedre tilgjengelighet og ytelse uten å ødelegge det som allerede var i produksjon.'
+cvDescription: 'Et bibliotek brukt av over 100 UC-nettsteder, uten mulighet til å vite hvordan hvert enkelt bruker det. Jobben min var å forbedre tilgjengelighet og ytelse uten å ødelegge det som allerede var i produksjon.'
+publishDate: '2026-08-01'
 isFeatured: true
-audioUrl: '/tts/no-kit-digital-uc.wav'
 ---
 
-# Kit Digital UC
+## Kontekst
 
-**Kit Digital UC** er ryggraden i det digitale økosystemet til **Det pavelige katolske universitetet i Chile**. Det er et **komponentbibliotek i Vanilla JavaScript** som sikrer visuell konsistens, tilgjengelighet og høy ytelse på mer enn 100 institusjonelle nettsteder.
+Kit Digital UC var min første erfaring med et designsystem i produksjon. Da jeg begynte i 2022 var det allerede en konsolidert base: et komponentbibliotek brukt på over 100 av universitetets nettsteder, som hadde standardisert grensesnitt og gjort utviklingen raskere.
 
-Valget av Vanilla JS var ikke tilfeldig: det svarer på et nøkkelkrav i prosjektet, nemlig å **fungere på alle nettsteder**, uavhengig av om de bruker moderne rammeverk eller ikke. Dette gjør at både nye applikasjoner og tradisjonelle universitetsnettsteder kan integrere de samme komponentene og stilene uten friksjon.
+Det er en referanse blant institusjonelle designsystemer i Chile. Det løser et konkret problem: å holde visuell og teknisk sammenheng i stor skala, i en organisasjon med mange team og utviklingssykluser som ikke henger sammen. Senere systemer har hentet lærdom fra denne modellen, direkte eller indirekte.
 
-## Mitt bidrag
+<figure>
+  <img src="/img/projects/kit-digital-uc/00.png" alt="Forsiden til dokumentasjonssiden for Kit Digital UC på kitdigital.uc.cl" loading="lazy" />
+  <figcaption>Dokumentasjonssiden for Kit Digital UC – kitdigital.uc.cl</figcaption>
+</figure>
 
-Jeg startet med å rette opp konkrete problemer innen tilgjengelighet og brukervennlighet, men etter hvert ble rollen min utvidet til å omfatte design av mer omfattende tekniske løsninger:
+## Problemet
 
-- **Lastoptimalisering med dynamiske imports**  
-  Jeg erstattet den monolittiske innlastingen av biblioteket med et system som analyserer DOM-en og laster kun de komponentene som faktisk brukes. I stedet for å laste hele biblioteket får hvert nettsted bare det som er nødvendig, noe som forbedret ytelsen i hele økosystemet.
+Den utbredelsen gjorde at ethvert problem sluttet å være lokalt. Systemet var ikke dårlig designet, men det hadde vokst raskere enn kvalitetskriteriene sine. Tilgjengelighetsfeil satt i basiskomponenter som brukes overalt, og ble derfor replikert i hele systemet. Én enkelt bundle tvang inn unødvendig kode selv på enkle nettsteder, og noen implementasjonsmønstre gjorde det umulig å videreutvikle uten bivirkninger.
 
-- **Forbedret tilgjengelighet og semantikk**  
-  Jeg erstattet bruken av `background-image` i over 50 komponenter med `<img>`-elementer med `alt`-attributter. Dette gjorde at skjermleserbrukere fikk tilgang til innhold som tidligere var utilgjengelig, samtidig som semantikken og søkemotoroptimaliseringen ble styrket.
+Og det var en kritisk begrensning: Kit ble distribuert over et CDN. Det fremmet utbredelsen og sentraliserte oppdateringer, men de som brukte det kontrollerte ikke versjonen. Hver endring gikk rett i produksjon, uten at vi visste i hvilken sammenheng det ble brukt. En justering i en basiskomponent kunne ødelegge navigasjon, stiler eller interaksjon på nettsteder vi ikke kunne revidere på forhånd.
 
-- **Kompatibilitet og distribusjon**  
-  Kit Digital UC er tilgjengelig via **CDN** og **NPM**, noe som gjør det mulig å integrere i prosjekter med moderne pipelines, men også i tradisjonelle nettsteder uten kompilering. Dette krever kontinuerlig bakoverkompatibilitet, slik at oppdateringer ikke bryter produksjonsprosjekter.
+Det var ikke rom for omskrivinger eller koordinerte migreringer. Å forbedre systemet betydde å jobbe med noe levende, der det ikke var et alternativ å bryte kompatibiliteten.
 
-- **Helhetlig tilgjengelighetsgjennomgang**  
-  Jeg driver for tiden en full revisjon av komponentene i henhold til **WCAG 2.1 AA-standardene**, slik at enhver forbedring i tilgjengelighet umiddelbart kan gjenspeiles i prosjekter som er avhengige av biblioteket, som **UC-portalen** og **Agenda UC**.
+## Hva vi endret
 
-## Brukte teknologier
+Strategien var inkrementell: hver endring måtte integreres uten friksjon, sameksistere med eksisterende implementasjoner og løse reelle problemer uten å skape nye.
 
-- **Vanilla JavaScript** for å garantere universell kompatibilitet.
-- **CSS/SCSS** for modulære og gjenbrukbare stiler i ethvert miljø.
-- **CDN og NPM** som distribusjonskanaler.
+På tilgjengelighet rettet vi beslutninger som påvirket semantikken til mye brukte komponenter. For eksempel byttet vi ut `background-image` med `<img>` pluss `alt`, noe som ga synlighet tilbake til skjermlesere og søkemotorer. Vi normaliserte også interaksjonsmønstre og fjernet feil bruk av knapper og lenker, noe som forbedret tastaturnavigasjonen.
 
-## Effekt
+På ytelse gikk vi fra én enkelt bundle til modulær lasting styrt av DOM-en: en loader inspiserer siden under kjøring og laster bare komponentene den trenger. Det gir flere forespørsler, men reduserer startvekten. I gjennomsnitt gikk lastetidene ned ~500 ms.
 
-Kit Digital UC er ikke bare et bibliotek: det er den **felles infrastrukturen** som multipliserer verdien av hver forbedring. Hver justering i ytelse, tilgjengelighet eller brukervennlighet kommer hele universitetsfellesskapet til gode – fra studenter til undervisere og administrativt personale – gjennom titalls nettsteder som deler den samme teknologiske basen.
+<figure>
+  <img src="/img/projects/kit-digital-uc/01.png" alt="Forsiden til uc.cl, et av nettstedene bygget på Kit Digital UC" loading="lazy" />
+  <figcaption>Forsiden til uc.cl</figcaption>
+</figure>
+
+## Hvordan vi gjorde det uten å ødelegge noe
+
+Gitt risikoen validerte vi hver endring mot reelle Kit-implementasjoner og gikk gjennom representative scenarier før vi integrerte den. Beslutningene fulgte enkle regler: bakoverkompatibilitet som standard, små endringer som bygger seg opp, og ingen løsning som avhang av konteksten.
+
+<figure>
+  <img src="/img/projects/kit-digital-uc/03.png" alt="Bunnteksten til uc.cl, en komponent som er en del av Kit Digital UC" loading="lazy" />
+  <figcaption>Bunnteksten til uc.cl</figcaption>
+</figure>
+
+## Rollen min
+
+Rollen min gikk fra implementering mot systembeslutninger. Jeg deltok i å definere tilgjengelighetskriteriene, moduliseringsstrategien og konsekvensvurderingen av hver endring. Fokuset sluttet å handle om å løse isolerte problemer og ble å innføre forbedringer uten å true stabiliteten, i et miljø der vi ikke kontrollerer hvordan det vi bygger blir brukt.
+
+## Resultat og læring
+
+I dag er systemet mer konsistent, mer tilgjengelig og lettere. Det gikk fra å laste alt som standard til å laste bare det som trengs, og fra inkonsistente mønstre til mer forutsigbar atferd. Det støtter over 100 nettsteder og har over 2,1 millioner besøk i måneden.
+
+Det viktigste jeg lærte var å gå tilbake til det grunnleggende. Å jobbe med Kit tvang meg til å forstå HTML, CSS og JavaScript som et system: ekte semantikk for tilgjengelighet og kodelasting for ytelse. Det var også første gang jeg bygde et bibliotek brukt i mange sammenhenger, og der forsto jeg CJS mot ESM i praksis, hvilken rolle bundlere har og hvordan de valgene påvirker det som kjører i produksjon.
+
+Et bibliotek er ikke bare komponenter: det er stabile kontrakter og beslutninger som må fungere i sammenhenger du ikke kontrollerer. I et delt system måles kvalitet på hvor mye det kan utvikle seg uten å gå i stykker.
+
+[https://kitdigital.uc.cl](https://kitdigital.uc.cl/) · [Repository](https://bitbucket.org/asimovers/uc-kitdigital/src/main/)

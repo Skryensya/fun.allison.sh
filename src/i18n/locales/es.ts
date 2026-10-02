@@ -10,9 +10,8 @@ export const es = {
     'home.cvButton': 'Ver currículum',
     'home.stats.location': 'Ubicación',
     'home.stats.status': 'Estado',
-    'hero.heading': 'Hola, soy Allison. Bienvenido a mi sitio',
-    'hero.description':
-        'Construyo experiencias web que priorizan la usabilidad, la accesibilidad y los detalles que importan. Este sitio es en sí mismo un proyecto: cada decisión de diseño y código está pensada para mostrar cómo trabajo.',
+    'hero.heading': 'Construyo cosas que se sienten obvias.',
+    'hero.description': 'Trabajo en design systems y plataformas institucionales, y construyo herramientas propias por curiosidad. Me importan los casos borde y la accesibilidad desde el inicio, no como algo que se agrega al final.',
     'hero.cards.frontend.title': 'Interfaces',
     'hero.cards.frontend.description': 'Código limpio, componentes accesibles, atención al detalle',
     'hero.cards.backend.title': 'Sistemas',
@@ -20,11 +19,10 @@ export const es = {
     'hero.cards.design.title': 'Diseño',
     'hero.cards.design.description': 'Brutalismo funcional, sistema coherente',
     'about.title': 'Sobre mí',
-    'about.tldr': 'Creo experiencias web claras y accesibles, cuidando los detalles y pensando siempre en quienes las usan.',
+    'about.tldr': 'Me gusta entender cómo funcionan las cosas y llevarlas un poco más allá. Disfruto construir, iterar, simplificar. Tengo una fascinación genuina por el diseño y me gusta trabajar cerca de él.',
     'about.tldrLabel': 'Resumen',
     'about.expanded': [
-        'Durante los últimos cuatro años he trabajado en consultoría, participando en proyectos de gran escala como el <a href="/proyectos/kit-digital-uc">Kit Digital UC</a>, sistema de diseño que hoy utilizan más de 100 sitios de la Universidad Católica. Esa experiencia fortaleció mi base frontend y mi forma de pensar producto: decisiones claras, consistencia entre equipos y soluciones que se sostengan en el tiempo.',
-        'Me motiva construir productos bien pensados, donde la accesibilidad, la claridad y la comunicación abierta estén integradas desde el inicio. Fuera del trabajo, dedico gran parte de mi tiempo a aprender noruego, jugar ajedrez, explorar música y crear proyectos personales para satisfacer mi necesidad de construir cosas interesantes. Este sitio es una prueba de ello.'
+        'Fuera del trabajo paso tiempo aprendiendo noruego, jugando ajedrez y explorando música. También construyo proyectos personales de forma constante, más por curiosidad que por necesidad. Este sitio es una extensión de eso.'
     ],
     'about.cta.message': 'Si algo de esto resuena contigo, escríbeme. Me encantaría charlar.',
     'about.cta.button': 'Conversemos',
@@ -33,7 +31,7 @@ export const es = {
     'about.cta.copy.success': 'Correo copiado al portapapeles',
     'about.cta.copy.error': 'No se pudo copiar el correo',
     'about.viewMore.open': 'Leer más',
-    'site.description': 'Allison Peña es desarrollador web full stack.',
+    'site.description': 'Diseño y desarrollo interfaces web claras, accesibles y rápidas. Me interesan los sistemas y las decisiones que hacen útil una experiencia.',
     'ui.loading': 'Cargando...',
     'theme.toast.unlocked': '¡Has desbloqueado {count} temas adicionales!',
     'theme.toast.locked': 'Has ocultado los temas adicionales',

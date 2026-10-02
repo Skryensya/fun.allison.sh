@@ -1,40 +1,62 @@
 ---
-name: 'UC Digital Kit'
-hook: 'I developed and optimized the UC Digital Kit, a Vanilla JavaScript library that ensures accessibility, consistency, and performance across more than 100 institutional websites.'
-cvDescription: 'Web component library for Pontificia Universidad Católica de Chile, serving as the technological backbone of the university’s digital ecosystem.'
-publishDate: '2025-05-20'
+name: 'Kit Digital UC'
+hook: 'A library used by more than 100 UC sites, with no way of knowing how each one uses it. My job was improving its accessibility and performance without breaking what was already in production.'
+cvDescription: 'A library used by more than 100 UC sites, with no way of knowing how each one uses it. My job was improving its accessibility and performance without breaking what was already in production.'
+publishDate: '2026-08-01'
 isFeatured: true
-audioUrl: '/tts/en-kit-digital-uc.wav'
 ---
 
-# UC Digital Kit
+## Context
 
-The **UC Digital Kit** is the backbone of the digital ecosystem at Pontificia Universidad Católica de Chile. It is a **Vanilla JavaScript component library** that guarantees visual consistency, accessibility, and performance across more than 100 institutional websites.
+The Kit Digital UC was my first experience with a design system in production. When I joined in 2022 it was already a consolidated base: a component library used across more than 100 of the university's sites, which had standardized interfaces and sped up development.
 
-The choice of Vanilla JS was not accidental: it answered a key requirement of the project — to **work on any site**, regardless of whether it uses a modern framework or not. This ensures that both new applications and traditional university websites can integrate the same components and styles without friction.
+It's a reference among institutional design systems in Chile. It solves a concrete problem: keeping visual and technical coherence at scale, in an organization with many teams and misaligned development cycles. Later systems have taken lessons from this model, directly or indirectly.
 
-## My contribution
+<figure>
+  <img src="/img/projects/kit-digital-uc/00.png" alt="Homepage of the Kit Digital UC documentation site at kitdigital.uc.cl" loading="lazy" />
+  <figcaption>Kit Digital UC documentation site — kitdigital.uc.cl</figcaption>
+</figure>
 
-I began by addressing specific accessibility and usability issues, but over time my role expanded into designing and implementing higher-impact technical solutions:
+## The problem
 
-- **Loading optimization with dynamic imports**  
-  I replaced the monolithic loading of the Kit with a system that scans the DOM and downloads only the components actually in use. Instead of loading the full library, each site now receives only what is necessary, improving performance across the entire ecosystem.
+That adoption meant any problem stopped being local. The system wasn't badly designed, but it had grown faster than its quality criteria. Accessibility failures lived in base components used everywhere, so they were replicated across the whole system. A single bundle forced loading unnecessary code even on simple sites, and some implementation patterns made it impossible to evolve without side effects.
 
-- **Improved accessibility and semantics**  
-  I replaced `background-image` usage in more than 50 components with `<img>` elements and `alt` attributes. This allowed screen reader users to access previously inaccessible content, while also improving semantic structure and search engine visibility.
+And there was a critical constraint: the Kit was distributed over a CDN. That favored adoption and centralized updates, but the people consuming it didn't control the version. Every change went straight to production, without us knowing in what context it was used. A tweak to a base component could break navigation, styles or interaction on sites we couldn't audit beforehand.
 
-- **Compatibility and distribution**  
-  The Kit is distributed via **CDN** and **NPM**, enabling integration into both modern build pipelines and traditional non-compiled sites. This requires strict backward compatibility, ensuring that updates do not break projects already in production.
+There was no room for rewrites or coordinated migrations. Improving the system meant working on something alive, where breaking compatibility wasn't an option.
 
-- **Comprehensive accessibility review**  
-  I am currently leading a full accessibility review of the Kit’s components under **WCAG 2.1 AA** standards, ensuring that any improvement is immediately reflected in dependent projects such as **UC Portal** and **UC Agenda**.
+## What we changed
 
-## Technologies used
+The strategy was incremental: every change had to integrate without friction, coexist with existing implementations and solve real problems without creating new ones.
 
-- **Vanilla JavaScript** to guarantee universal compatibility.
-- **CSS/SCSS** for modular, reusable styles in any environment.
-- **CDN and NPM** as distribution channels.
+On accessibility, we fixed decisions that affected the semantics of widely used components. For example, we replaced `background-image` with `<img>` plus `alt`, which gave visibility back to screen readers and search engines. We also normalized interaction patterns and removed incorrect uses of buttons and links, which improved keyboard navigation.
 
-## Impact
+On performance, we moved from a single bundle to modular loading driven by the DOM: a loader inspects the page at runtime and loads only the components it needs. That adds requests but reduces the initial weight. On average, load times dropped ~500 ms.
 
-The UC Digital Kit is more than just a library: it is the **common infrastructure** that multiplies the impact of every improvement. Each adjustment in performance, accessibility, or usability benefits the entire university community — students, faculty, and staff — through dozens of sites that share the same technological foundation.
+<figure>
+  <img src="/img/projects/kit-digital-uc/01.png" alt="uc.cl home, one of the sites built on the Kit Digital UC" loading="lazy" />
+  <figcaption>uc.cl home</figcaption>
+</figure>
+
+## How we did it without breaking anything
+
+Given the risk, we validated every change against real Kit implementations and reviewed representative scenarios before integrating it. Decisions followed simple rules: backward compatibility by default, small cumulative changes, and no solution that depended on context.
+
+<figure>
+  <img src="/img/projects/kit-digital-uc/03.png" alt="uc.cl footer, a component that is part of the Kit Digital UC" loading="lazy" />
+  <figcaption>uc.cl footer</figcaption>
+</figure>
+
+## My role
+
+My role moved from implementation toward system decisions. I took part in defining the accessibility criteria, the modularization strategy and the impact assessment of each change. The focus stopped being about solving isolated problems and became introducing improvements without compromising stability, in an environment where we don't control how what we build is used.
+
+## Result and learning
+
+Today the system is more consistent, more accessible and lighter. It went from loading everything by default to loading only what's needed, and from inconsistent patterns to more predictable behavior. It supports more than 100 sites and exceeds 2.1 million monthly visits.
+
+The most important thing I learned was going back to basics. Working on the Kit forced me to understand HTML, CSS and JavaScript as a system: real semantics for accessibility and code loading for performance. It was also the first time I built a library consumed in many contexts, and that's where I understood CJS vs ESM in practice, the role of bundlers and how those decisions affect what runs in production.
+
+A library is not just components: it's stable contracts and decisions that have to work in contexts you don't control. In a shared system, quality is measured by how much it can evolve without breaking.
+
+[https://kitdigital.uc.cl](https://kitdigital.uc.cl/) · [Repository](https://bitbucket.org/asimovers/uc-kitdigital/src/main/)

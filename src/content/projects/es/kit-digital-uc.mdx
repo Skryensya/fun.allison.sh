@@ -1,40 +1,62 @@
 ---
 name: 'Kit Digital UC'
-hook: 'Desarrollé y optimicé el Kit Digital UC, una librería en Vanilla JavaScript que asegura accesibilidad, coherencia y rendimiento en más de 100 sitios institucionales.'
-cvDescription: 'Librería de componentes web para la Pontificia Universidad Católica de Chile, base tecnológica del ecosistema digital institucional.'
-publishDate: '2025-05-20'
+hook: 'Una librería que usan más de 100 sitios de la UC, sin saber cómo la usa cada uno. Mi trabajo fue mejorar su accesibilidad y su rendimiento sin romper lo que ya estaba en producción.'
+cvDescription: 'Una librería que usan más de 100 sitios de la UC, sin saber cómo la usa cada uno. Mi trabajo fue mejorar su accesibilidad y su rendimiento sin romper lo que ya estaba en producción.'
+publishDate: '2026-08-01'
 isFeatured: true
-audioUrl: '/tts/es-kit-digital-uc.wav'
 ---
 
-# Kit Digital UC
+## Contexto
 
-El **Kit Digital UC** es la columna vertebral del ecosistema digital de la Pontificia Universidad Católica de Chile. Es una **librería de componentes en Vanilla JavaScript** que asegura coherencia visual, accesibilidad y rendimiento en más de 100 sitios institucionales.
+El Kit Digital UC fue mi primera experiencia con un sistema de diseño en producción. Cuando entré, en 2022, ya era una base consolidada: una librería de componentes usada en más de 100 sitios de la universidad, que había estandarizado las interfaces y acelerado el desarrollo.
 
-La elección de Vanilla JS no fue casualidad: responde a un requisito clave del proyecto, que es **funcionar en cualquier sitio**, sin importar si usa un framework moderno o no. Esto asegura que tanto aplicaciones nuevas como sitios tradicionales de la universidad puedan incorporar los mismos componentes y estilos sin fricciones.
+Es una referencia entre los sistemas de diseño institucionales de Chile. Resuelve un problema concreto: mantener la coherencia visual y técnica a escala, en una organización con muchos equipos y ciclos de desarrollo desalineados. Sistemas posteriores han tomado aprendizajes de este modelo, directa o indirectamente.
 
-## Mi contribución
+<figure>
+  <img src="/img/projects/kit-digital-uc/00.png" alt="Homepage del sitio de documentación del Kit Digital UC en kitdigital.uc.cl" loading="lazy" />
+  <figcaption>Sitio de documentación del Kit Digital UC — kitdigital.uc.cl</figcaption>
+</figure>
 
-Desde el inicio trabajé corrigiendo problemas puntuales de accesibilidad y usabilidad, pero con el tiempo mi rol se amplió hacia el diseño de soluciones técnicas de mayor impacto:
+## El problema
 
-- **Optimización de carga con dynamic imports**  
-  Reemplacé la carga monolítica del Kit por un sistema que analiza el DOM y descarga únicamente los componentes realmente usados. Así, en lugar de cargar la librería completa, cada sitio solo recibe lo indispensable, mejorando el rendimiento en todo el ecosistema.
+Esa adopción hacía que cualquier problema dejara de ser local. El sistema no estaba mal diseñado, pero había crecido más rápido que sus criterios de calidad. Las fallas de accesibilidad estaban en componentes base de uso transversal, así que se replicaban en todo el sistema. Un único bundle obligaba a cargar código innecesario incluso en sitios simples, y algunos patrones de implementación impedían evolucionar sin efectos colaterales.
 
-- **Accesibilidad y semántica mejoradas**  
-  Reemplacé el uso de `background-image` en más de 50 componentes por elementos `<img>` con atributos `alt`. Esto permitió que los usuarios de lectores de pantalla accedieran a contenido antes inaccesible, además de mejorar la semántica y el posicionamiento de los sitios en buscadores.
+Y había una restricción crítica: el Kit se distribuía por CDN. Eso favorecía la adopción y la actualización centralizada, pero quienes lo consumían no controlaban la versión. Cada cambio llegaba directo a producción, sin que supiéramos en qué contexto se usaba. Un ajuste a un componente base podía romper la navegación, los estilos o la interacción en sitios que no podíamos auditar antes.
 
-- **Compatibilidad y distribución**  
-  El Kit está disponible por **CDN** y **NPM**, lo que permite su integración en proyectos con pipelines modernos, pero también en sitios tradicionales sin compilación. Esto obliga a mantener compatibilidad retroactiva, cuidando que las actualizaciones no rompan proyectos en producción.
+No había espacio para reescrituras ni migraciones coordinadas. Mejorar el sistema era intervenir algo vivo, donde romper la compatibilidad no era una opción.
 
-- **Revisión integral de accesibilidad**  
-  Actualmente estoy impulsando una revisión completa de los componentes del Kit bajo los estándares **WCAG 2.1 AA**, para que cualquier mejora en accesibilidad se replique de inmediato en proyectos que dependen de esta librería, como el **Portal UC** y la **Agenda UC**.
+## Qué cambiamos
 
-## Tecnologías involucradas
+La estrategia fue incremental: cada cambio tenía que integrarse sin fricción, convivir con las implementaciones existentes y resolver problemas reales sin crear otros.
 
-- **Vanilla JavaScript** para garantizar compatibilidad universal.
-- **CSS/SCSS** para estilos modulares y reutilizables en cualquier entorno.
-- **CDN y NPM** como vías de distribución.
+En accesibilidad corregimos decisiones que afectaban la semántica de componentes muy usados. Por ejemplo, reemplazamos `background-image` por `<img>` con `alt`, lo que devolvió visibilidad a lectores de pantalla y buscadores. También normalizamos los patrones de interacción y evitamos usos incorrectos de botones y enlaces, lo que mejoró la navegación por teclado.
 
-## Impacto
+En rendimiento pasamos de un bundle único a una carga modular guiada por el DOM: un loader revisa la página en runtime y carga solo los componentes que necesita. Eso agrega requests, pero reduce el peso inicial. En promedio, los tiempos de carga bajaron ~500 ms.
 
-El Kit Digital UC no es solo una librería: es la **infraestructura común** que multiplica el valor de cada mejora. Cada ajuste en rendimiento, accesibilidad o usabilidad beneficia a toda la comunidad universitaria, desde estudiantes hasta docentes y personal administrativo, a través de decenas de sitios que comparten la misma base tecnológica.
+<figure>
+  <img src="/img/projects/kit-digital-uc/01.png" alt="Home de uc.cl, uno de los sitios construidos sobre el Kit Digital UC" loading="lazy" />
+  <figcaption>Home de uc.cl</figcaption>
+</figure>
+
+## Cómo lo hicimos sin romper nada
+
+Dado el riesgo, validábamos cada cambio sobre implementaciones reales del Kit y revisábamos escenarios representativos antes de integrarlo. Las decisiones seguían reglas simples: compatibilidad hacia atrás por defecto, cambios pequeños y acumulativos, y ninguna solución que dependiera del contexto.
+
+<figure>
+  <img src="/img/projects/kit-digital-uc/03.png" alt="Footer de uc.cl, componente parte del Kit Digital UC" loading="lazy" />
+  <figcaption>Footer de uc.cl</figcaption>
+</figure>
+
+## Mi rol
+
+Mi rol fue pasando de la implementación a las decisiones de sistema. Participé en definir los criterios de accesibilidad, la estrategia de modularización y la evaluación del impacto de cada cambio. El foco dejó de ser resolver problemas aislados y pasó a ser introducir mejoras sin comprometer la estabilidad, en un entorno donde no controlamos cómo se usa lo que construimos.
+
+## Resultado y aprendizaje
+
+Hoy el sistema es más consistente, más accesible y más liviano. Pasó de cargar todo por defecto a cargar solo lo necesario, y de patrones inconsistentes a comportamientos más predecibles. Soporta más de 100 sitios y supera los 2,1 millones de visitas mensuales.
+
+Lo más importante que aprendí fue volver a las bases. Trabajar en el Kit me obligó a entender HTML, CSS y JavaScript como un sistema: semántica real para la accesibilidad y carga de código para el rendimiento. También fue la primera vez que construí una librería consumida en muchos contextos, y ahí entendí en la práctica CJS vs ESM, el rol de los bundlers y cómo esas decisiones afectan lo que se ejecuta en producción.
+
+Una librería no es solo componentes: son contratos estables y decisiones que tienen que funcionar en contextos que no controlas. En un sistema compartido, la calidad se mide por cuánto puede evolucionar sin romperse.
+
+[https://kitdigital.uc.cl](https://kitdigital.uc.cl/) · [Repositorio](https://bitbucket.org/asimovers/uc-kitdigital/src/main/)

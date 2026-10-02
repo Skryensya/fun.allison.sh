@@ -1,0 +1,39 @@
+---
+name: 'Printer'
+hook: 'Cualquiera puede mandarme un mensaje y verlo salir impreso, al instante, en la impresora térmica de mi escritorio. Empezó con una pregunta: ¿y si cualquier cosa de internet pudiera imprimir ahí?'
+cvDescription: 'Cualquiera puede mandarme un mensaje y verlo salir impreso, al instante, en la impresora térmica de mi escritorio. Empezó con una pregunta: ¿y si cualquier cosa de internet pudiera imprimir ahí?'
+publishDate: '2026-09-01'
+isFeatured: true
+---
+
+## El problema
+
+Tenía una impresora térmica de recibos, de las baratas, juntando polvo en el escritorio. Se me ocurrió que sería divertido conectarla a internet, sin ninguna razón práctica: que un build que termina me tire un recibo, que la lista del súper salga en papel antes de salir de casa, que un amigo me escriba algo y aparezca, físico, sobre mi escritorio sin que yo mueva un dedo. De ahí salió este proyecto.
+
+## La solución
+
+En el fondo es una API. Le mandas un POST con lo que quieras imprimir (texto, una tarjeta, una lista, un QR, una imagen) y queda en una cola. Un agente chiquito, corriendo en la máquina conectada a la impresora, escucha esa cola por WebSocket y maneja la impresora por USB con el protocolo ESC/POS. Arriba hay un panel para ver la cola en vivo, componer impresiones a mano y repartir llaves de acceso.
+
+<figure>
+  <img src="/img/projects/printer-1.webp" alt="Ping en modo claro: fondo claro con el título «Mándame un Ping», un campo de nombre opcional, un mensaje escrito y el límite de un ping cada 30 minutos." loading="lazy" />
+  <figcaption>Modo claro: un mensaje, un envío cada 30 minutos</figcaption>
+</figure>
+
+El primer consumidor de esa API es Ping, la parte pública. Vive en <a href="https://ping.allison.sh" class="editorial-link" target="_blank" rel="noopener noreferrer">ping.allison.sh<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a>, no pide cuenta ni llave y por dentro llama al mismo endpoint que cualquier otro consumidor. Tiene su propia llave, su propio límite de uso, reCAPTCHA y un cooldown por IP para frenar bots. La API no sabe que Ping existe: para ella es un consumidor más.
+
+<figure>
+  <img src="/img/projects/printer-2.webp" alt="Ping en modo oscuro: el mismo formulario sobre fondo oscuro, con el mensaje escrito y el botón de envío." loading="lazy" />
+  <figcaption>Modo oscuro, mismo formulario: de día o de noche, lo que mandas sale como boleta</figcaption>
+</figure>
+
+## Decisiones técnicas
+
+Lo más entretenido fueron los momentos raros entre las piezas. Una impresora no tiene deshacer: una vez que el papel salió, salió. Casi todo el diseño se fue en los casos borde. ¿Qué pasa si desconecto la impresora a mitad de un job? Vuelve a la cola, sin penalización. ¿Y si dos agentes pelean por el mismo cable? Se turnan con un lock del kernel y nadie corta un recibo a la mitad.
+
+Cada pregunta era un rompecabezas con premio físico: si lo resolvía bien, sonaba la impresora. Es de los pocos proyectos donde el bug se ve en papel, y el éxito también. Todo corre sobre Bun y Postgres.
+
+## Mándame algo
+
+Esta es la mejor parte: puedes probarlo ahora mismo, sin cuenta ni nada que instalar. Entra a Ping, donde cada tap y cada envío tiene su propio sonido (se parece más a un juego que a un formulario), escribe algo y en segundos lo tienes en papel, sobre mi escritorio. Es la forma más directa de saludarme. Apenas sale impreso, lo leo.
+
+[https://ping.allison.sh](https://ping.allison.sh)

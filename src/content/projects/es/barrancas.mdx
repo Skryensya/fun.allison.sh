@@ -1,56 +1,35 @@
 ---
 name: 'Barrancas'
-hook: 'Desarrollé Barrancas, una plataforma de encuestas para escuelas que identifica estudiantes en riesgo y facilita intervenciones tempranas.'
-cvDescription: 'Plataforma integral para instituciones educativas enfocada en la detección y apoyo de estudiantes en riesgo. Desarrollo full-stack, diseño de arquitectura y evolución continua.'
-publishDate: 2023-03-01
-isFeatured: false
-color: '#009966'
-tags: ['vue', 'tailwind', 'adonisjs', 'mysql', 'full-stack']
+hook: 'Las señales de riesgo de un estudiante se anotaban en papel y se perdían. Barrancas las reúne en un solo sistema para detectarlas a tiempo y darles seguimiento.'
+cvDescription: 'Las señales de riesgo de un estudiante se anotaban en papel y se perdían. Barrancas las reúne en un solo sistema para detectarlas a tiempo y darles seguimiento.'
+publishDate: '2026-04-01'
+isFeatured: true
 ---
 
-# Barrancas
+## El problema
 
-**Barrancas** es una plataforma integral de encuestas diseñada para instituciones educativas, cuyo objetivo es **detectar y apoyar tempranamente a estudiantes en situación de riesgo académico, social o emocional**. La herramienta combina tecnología y pedagogía para fortalecer el bienestar estudiantil y mejorar la toma de decisiones de directivos y docentes.
+Barrancas nació para digitalizar y consolidar procesos que ya existían en instituciones educativas, pero que se hacían a mano y en papel. La información sobre estudiantes, bienestar y señales de alerta sí se levantaba, pero el proceso era lento, fragmentado y difícil de escalar.
 
-## Características principales
+Eso afectaba la eficiencia y el alcance. Consolidar resultados tomaba tiempo, seguir un caso exigía trabajo manual y la información no siempre era lo bastante clara para actuar rápido. Recolectar datos era la parte fácil. Lo difícil era organizarlos de modo que permitieran detectar a tiempo a los estudiantes en riesgo y darles seguimiento con más criterio y menos fricción operativa.
 
-- **Encuestas personalizables** adaptadas a distintos niveles educativos.
-- **Sistema de alertas tempranas** que identifica estudiantes en riesgo.
-- **Dashboard analítico** para educadores y administradores con métricas claras.
-- **Reportes automatizados** con insights accionables.
+## La solución
 
-## Tecnologías utilizadas
+La plataforma ordena todo ese flujo dentro de un solo sistema. Digitalizar un proceso institucional existente era mucho más que pasar formularios a una pantalla: había que volverlo más eficiente, más trazable y más fácil de sostener en el tiempo.
 
-- **Vue.js** para una interfaz reactiva y accesible.
-- **Tailwind CSS** para un diseño responsivo y consistente.
-- **AdonisJS** como framework backend robusto y escalable.
-- **MySQL** para almacenamiento seguro de datos sensibles.
-
-## Funcionalidades clave
-
-- Encuestas multi-formato (opción múltiple, escalas, texto libre).
-- Algoritmos de análisis para la detección de riesgo.
-- Panel de control con visualizaciones interactivas para educadores.
-- Sistema de notificaciones y seguimiento individual de casos.
-- Exportación de datos para análisis externos.
-
-## Impacto social
-
-Barrancas ha permitido a las instituciones educativas:
-
-- Identificar proactivamente a estudiantes que necesitan apoyo.
-- Implementar intervenciones tempranas y personalizadas.
-- Mejorar tasas de retención y éxito académico.
-- Crear entornos escolares más inclusivos y seguros.
+Barrancas permite configurar encuestas según el contexto de cada institución, centralizar las respuestas, identificar señales de riesgo y mostrar la información en dashboards y reportes. Así se reduce la dispersión del proceso, y los equipos directivos y docentes entienden mejor la situación de sus estudiantes y pueden actuar antes.
 
 ## Mi rol
 
-Fui responsable del **desarrollo full-stack completo** de la plataforma, desde la arquitectura backend hasta la implementación de la interfaz de usuario. También lideré la evolución continua del producto, incorporando nuevas funcionalidades en base al feedback de educadores.
+Fui responsable del desarrollo full-stack de la plataforma, desde la arquitectura del backend hasta la interfaz, y participé en su evolución continua a partir del uso real y el feedback de los equipos educativos.
 
-## Desarrollo continuo
+Buena parte del trabajo fue traducir procesos existentes, con sus propias lógicas y limitaciones, a una experiencia digital que no sumara complejidad innecesaria. Más que construir funcionalidades, importaba que el sistema fuera claro, operable y útil donde el tiempo y la capacidad de seguimiento son limitados.
 
-El proyecto sigue en evolución con mejoras como:
+## Decisiones técnicas
 
-- Integraciones con sistemas académicos existentes.
-- Herramientas de comunicación directa entre educadores, estudiantes y familias.
-- **Módulo de intervención y seguimiento de estudiantes.**
+Backend con AdonisJS, para mantener una organización clara a medida que el producto crecía. Frontend con Edge + Vue: renderizado en servidor por estabilidad, e interactividad solo donde hacía falta, sin sobredimensionar.
+
+Sobre esa base: encuestas configurables, visualizaciones para los equipos, reportes automatizados y seguimiento de casos. La decisión clave no fue el stack sino cómo estructurar el sistema para crecer sin perder claridad.
+
+## Evolución del producto
+
+Estamos trabajando en un nuevo módulo de seguimiento y acompañamiento. La idea es no quedarse en la detección y apoyar también la continuidad de la intervención.

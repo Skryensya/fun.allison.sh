@@ -10,8 +10,8 @@ export const en = {
     'home.cvButton': 'View my CV',
     'home.stats.location': 'Location',
     'home.stats.status': 'Status',
-    'hero.heading': "Hello, I'm Allison Welcome to my site",
-    'hero.description': 'I love creating websites that work well and are easy to use. I work primarily with React and TypeScript.',
+    'hero.heading': 'I build things that feel obvious.',
+    'hero.description': 'I work on design systems and institutional platforms, and build tools of my own out of curiosity. I care about edge cases and accessibility from the start, not as something added at the end.',
     'hero.cards.frontend.title': 'Frontend',
     'hero.cards.frontend.description': 'React, TypeScript, Astro',
     'hero.cards.backend.title': 'Backend',
@@ -19,11 +19,10 @@ export const en = {
     'hero.cards.design.title': 'Design',
     'hero.cards.design.description': 'UI/UX, Figma, Prototyping',
     'about.title': 'About Me',
-    'about.tldr': 'I create clear, accessible web experiences, paying attention to details and always thinking about the people who use them.',
+    'about.tldr': 'I like understanding how things work and taking them a little further. I enjoy building, iterating, simplifying. I have a genuine fascination with design and I like working close to it.',
     'about.tldrLabel': 'TL;DR',
     'about.expanded': [
-        'For the past four years, I\'ve worked in consulting, contributing to large-scale projects like <a href="/en/projects/kit-digital-uc">Kit Digital UC</a>, the design system now used by more than 100 Universidad Católica websites. That experience strengthened my frontend foundation and how I think about product: clear decisions, team-wide consistency, and solutions that hold up over time.',
-        "I'm motivated by building thoughtful products where accessibility, clarity, and open communication are part of the process from the start. Outside of work, I spend much of my time learning Norwegian, playing chess, exploring music, and creating personal projects to satisfy my need to build interesting things. This site is proof of that."
+        'Outside of work I spend my time learning Norwegian, playing chess and exploring music. I also build personal projects constantly, more out of curiosity than necessity. This site is an extension of that.'
     ],
     'about.cta.message': "If something here resonates, reach out — I'd love to chat.",
     'about.cta.button': "Let's talk",
@@ -32,7 +31,7 @@ export const en = {
     'about.cta.copy.success': 'Email copied to clipboard',
     'about.cta.copy.error': 'Could not copy email',
     'about.viewMore.open': 'Read more',
-    'site.description': 'Allison Peña is a full-stack web developer.',
+    'site.description': 'I design and build clear, accessible and fast web interfaces. I\'m interested in systems and in the decisions that make an experience useful.',
     'ui.loading': 'Loading...',
     'theme.toast.unlocked': "You've unlocked {count} additional themes!",
     'theme.toast.locked': "You've locked the additional themes until next time!",

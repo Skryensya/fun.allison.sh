@@ -1,39 +1,92 @@
 ---
 name: 'Agenda UC'
-hook: 'I designed and developed Agenda UC, a centralized system for academic and cultural events, built with a flexible Strapi API and an accessible React/Next.js frontend.'
-cvDescription: 'Activity and event management platform for Pontificia Universidad Católica de Chile. Full backend and frontend development with a focus on accessibility and visual consistency.'
-publishDate: '2025-05-20'
+hook: 'UC had activities to spare and no clear way to find them. I took part in building an agenda of its own, with an API so more than 50 units can show their events on their own sites.'
+cvDescription: 'UC had activities to spare and no clear way to find them. I took part in building an agenda of its own, with an API so more than 50 units can show their events on their own sites.'
+publishDate: '2026-07-01'
 isFeatured: true
-audioUrl: '/tts/en-agenda-uc.wav'
 ---
 
-# Agenda UC
+## The problem
 
-**Agenda UC** is the centralized system for publishing and exploring academic, cultural, and administrative activities at the university. Its goal is to make it simple and accessible for students, faculty, and staff to find and organize relevant events.
+Agenda UC lived inside uc.cl, with no autonomy and no model ready to grow. Publishing an event depended on the main site's editorial flow, which limited its visibility and distribution.
 
-The platform is built with a **Strapi backend** and a **React/Next.js frontend**, using components from the **UC Digital Kit** to maintain institutional consistency across the wider digital ecosystem.
+There was no shortage of activities. What was missing was a clear way to centralize them and amplify them.
 
-## My contribution
+## The solution
 
-- **Data model design (Strapi API)**  
-  I participated in defining and structuring the data model, including support for events with multiple dates, recurrences, and relationships between activities. This resulted in a flexible API capable of handling anything from a simple one-off event to conferences with multiple sessions and complex schedules.
+We rethought the Agenda as an independent system with three pillars:
 
-- **Performance optimization**  
-  I optimized queries and relationships to ensure information was coherent and loaded quickly, even with large volumes of data or when users applied filters.
+- **Autonomy:** its own backoffice to manage events
+- **Flexibility:** a model able to represent complex events
+- **Distribution:** an API to replicate the content on other sites
 
-- **Frontend development (React/Next.js)**  
-  I implemented the complete Agenda interface using the **UC Digital Kit** as the component foundation. When necessary, I created custom components that strictly followed the institutional design guidelines, ensuring a seamless and consistent experience.
+Today it supports more than 4,300 activities and integrates with more than 50 units through the [Kit Digital UC](/en/projects/kit-digital-uc).
 
-- **Accessibility as a standard**  
-  I applied **WCAG 2.1 AA** guidelines, making sure that filters, event lists, and navigation could be used with keyboards and screen readers. Accessibility was built into the platform from the very beginning.
+<figure>
+  <img src="/img/projects/agenda-uc-home.webp" alt="Agenda UC home at uc.cl/agenda: a banner reading “We present the events and activities available for the UC community and the general public”, a search bar and the Free, Online and Show filters buttons." loading="lazy" />
+  <figcaption>Agenda UC today: search and filters over the activity catalog</figcaption>
+</figure>
 
-## Technologies used
+## Modeling real complexity
 
-- **Strapi (Node.js)** for the event API.
-- **React + Next.js** for the dynamic frontend.
-- **UC Digital Kit** as the component foundation.
-- **CSS/SCSS** for visual customization.
+UC events aren't simple: they have several dates, times, locations and relationships to each other. We structured the domain in two levels:
+
+**Activities:** the base unit. Each activity happens within a single day and can have one or more time slots, designed for cases like a museum opening with breaks.
+
+<figure>
+  <img src="/img/projects/agenda-uc-actividad.webp" alt="An activity page on Agenda UC: “Exposición: Más allá del aplauso”, with its audiences, poster, dates, time, place and price." loading="lazy" />
+  <figcaption>An activity: one day, one place, one time slot</figcaption>
+</figure>
+
+**Events:** a container that groups activities under the same theme. Related activities are spread over time across the event.
+
+<figure>
+  <img src="/img/projects/agenda-uc-evento.webp" alt="An event page on Agenda UC: “Ciclo internacional de charlas sobre IA”, with its poster, sign-up button, link to its activities, dates, location, audience and price." loading="lazy" />
+  <figcaption>An event: the container that groups its activities</figcaption>
+</figure>
+
+With this separation we could:
+
+- model recurrences and variations without duplicating information
+- keep related sessions coherent
+- offer more precise filters, by activity or by event
+
+## Backend
+
+We designed an API in Strapi (TypeScript) that lets us:
+
+- model that complexity without rigidity
+- filter by several dimensions
+- scale without losing performance
+
+## Frontend
+
+I built the frontend in React + Next.js, focused on:
+
+- exploring events efficiently
+- syncing in real time with React Query
+- fast load times
 
 ## Impact
 
-Agenda UC has transformed the way the university community discovers and organizes academic and cultural life. Its flexible architecture and accessible frontend ensure that thousands of students and faculty can engage with the platform inclusively and in full alignment with the rest of UC’s digital ecosystem.
+The key change was going from a closed system to a distributed one:
+
+- more than 50 units embed events on their own sites
+- the information stays consistent
+- visibility grows without depending on a single entry point
+
+The Agenda stopped being a destination and became a source of information.
+
+## My role
+
+I worked with the technical team on the architecture and with design on the structure of the information, and I built the frontend end to end, turning a complex model into a clear experience.
+
+## The hard part
+
+The hard part wasn't writing down dates: it was modeling the domain *over time*, when the rules collide with real life.
+
+In practice assumptions break fast. The switch between summer and winter time throws off what looked stable on paper, some recurrences don't fit into templates, and some activities stretch for months and don't behave like a classic "event".
+
+That's where I stopped looking for the perfect schema and started prioritizing one that could withstand those exceptions without lying or breaking. The tension wasn't in writing code, but in representing that behavior without the system failing exactly where it was needed most.
+
+[https://agenda.uc.cl](https://agenda.uc.cl)

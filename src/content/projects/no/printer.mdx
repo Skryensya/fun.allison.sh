@@ -1,0 +1,39 @@
+---
+name: 'Printer'
+hook: 'Hvem som helst kan sende meg en melding og se den skrives ut, umiddelbart, på termoskriveren på pulten min. Det startet med et spørsmål: hva om alt på internett kunne skrives ut der?'
+cvDescription: 'Hvem som helst kan sende meg en melding og se den skrives ut, umiddelbart, på termoskriveren på pulten min. Det startet med et spørsmål: hva om alt på internett kunne skrives ut der?'
+publishDate: '2026-09-01'
+isFeatured: true
+---
+
+## Problemet
+
+Jeg hadde en billig termisk kvitteringsskriver som samlet støv på pulten. Det slo meg at det kunne være morsomt å koble den til internett, uten noen praktisk grunn: en build som er ferdig gir meg en kvittering, handlelisten kommer ut på papir før jeg går hjemmefra, en venn skriver noe til meg og det dukker opp, fysisk, på pulten min uten at jeg løfter en finger. Dette prosjektet kom ut av det.
+
+## Løsningen
+
+Under overflaten er det et API. Du sender en POST med det du vil skrive ut (tekst, et kort, en liste, en QR-kode, et bilde), og det havner i en kø. En liten agent, som kjører på maskinen koblet til skriveren, lytter på den køen over WebSocket og styrer skriveren over USB med ESC/POS-protokollen. Oppå det finnes et dashbord for å følge køen live, sette sammen utskrifter for hånd og dele ut tilgangsnøkler.
+
+<figure>
+  <img src="/img/projects/printer-1-en.webp" alt="Ping i lyst modus: lys bakgrunn med tittelen «Send me a Ping», et valgfritt navnefelt, en skrevet melding og grensen på én ping hvert 30. minutt." loading="lazy" />
+  <figcaption>Lyst modus: én melding, én sending hvert 30. minutt</figcaption>
+</figure>
+
+Den første brukeren av det API-et er Ping, den offentlige delen. Den ligger på <a href="https://ping.allison.sh" class="editorial-link" target="_blank" rel="noopener noreferrer">ping.allison.sh<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a>, ber ikke om konto eller nøkkel, og kaller internt det samme endepunktet som alle andre brukere. Den har sin egen nøkkel, sin egen bruksgrense, reCAPTCHA og en nedkjøling per IP for å stoppe boter. API-et vet ikke at Ping finnes: for det er Ping bare en bruker som alle andre.
+
+<figure>
+  <img src="/img/projects/printer-2-en.webp" alt="Ping i mørkt modus: det samme skjemaet på mørk bakgrunn, med den skrevne meldingen og send-knappen." loading="lazy" />
+  <figcaption>Mørkt modus, samme skjema: dag eller natt, det du sender kommer ut som en kvittering</figcaption>
+</figure>
+
+## Tekniske valg
+
+Det morsomste var de rare øyeblikkene mellom delene. En skriver har ingen angre-knapp: når papiret er ute, er det ute. Nesten hele designet gikk til kanttilfellene. Hva skjer hvis jeg trekker ut skriveren midt i en jobb? Den går tilbake i køen, uten straff. Og hvis to agenter slåss om den samme kabelen? De bytter på med en kernel-lås, og ingen kutter en kvittering i to.
+
+Hvert spørsmål var et puslespill med en fysisk premie: hvis jeg løste det riktig, sang skriveren. Det er et av de få prosjektene der feilen dukker opp på papir, og det gjør suksessen også. Alt kjører på Bun og Postgres.
+
+## Send meg noe
+
+Dette er den beste delen: du kan prøve det akkurat nå, uten konto og uten å installere noe. Gå til Ping, der hvert trykk og hver sending har sin egen lyd (det er mer som et spill enn et skjema), skriv noe, og i løpet av sekunder har du det på papir, på pulten min. Det er den mest direkte måten å si hei på. Så snart det skrives ut, leser jeg det.
+
+[https://ping.allison.sh](https://ping.allison.sh)

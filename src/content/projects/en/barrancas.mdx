@@ -1,56 +1,35 @@
 ---
 name: 'Barrancas'
-hook: 'I developed Barrancas, a survey platform for schools that identifies students at risk and enables early interventions.'
-cvDescription: 'Comprehensive platform for educational institutions focused on detecting and supporting at-risk students. Full-stack development, architecture design, and continuous evolution.'
-publishDate: 2023-03-01
-isFeatured: false
-color: '#009966'
-tags: ['vue', 'tailwind', 'adonisjs', 'mysql', 'full-stack']
+hook: 'A student''s risk signals were noted on paper and got lost. Barrancas brings them into a single system so they can be detected in time and followed up.'
+cvDescription: 'A student''s risk signals were noted on paper and got lost. Barrancas brings them into a single system so they can be detected in time and followed up.'
+publishDate: '2026-04-01'
+isFeatured: true
 ---
 
-# Barrancas
+## The problem
 
-**Barrancas** is a comprehensive survey platform designed for educational institutions, aimed at **detecting and supporting students at risk of academic, social, or emotional difficulties at an early stage**. The tool combines technology and pedagogy to strengthen student well-being and support better decision-making by administrators and educators.
+Barrancas came about to digitize and consolidate processes that already existed in educational institutions but were done by hand and on paper. Information about students, wellbeing and warning signs was being collected, but the process was slow, fragmented and hard to scale.
 
-## Key features
+That affected both efficiency and reach. Consolidating results took time, following a case required manual work, and the information wasn't always clear enough to act on quickly. Collecting data was the easy part. The hard part was organizing it so students at risk could be detected in time and followed up with better judgment and less operational friction.
 
-- **Customizable surveys** tailored to different educational levels.
-- **Early alert system** that identifies students at risk.
-- **Analytical dashboard** for educators and administrators with clear metrics.
-- **Automated reports** with actionable insights.
+## The solution
 
-## Technologies used
+The platform brings that entire flow into a single system. Digitizing an existing institutional process was much more than moving forms onto a screen: it had to become more efficient, more traceable and easier to sustain over time.
 
-- **Vue.js** for a reactive and accessible user interface.
-- **Tailwind CSS** for responsive and consistent design.
-- **AdonisJS** as a robust and scalable backend framework.
-- **MySQL** for secure storage of sensitive data.
-
-## Core functionalities
-
-- Multi-format surveys (multiple choice, scales, free text).
-- Risk detection algorithms to identify patterns of concern.
-- Interactive dashboard for educators with visualizations.
-- Notification system and individual case tracking.
-- Data export for external analysis.
-
-## Social impact
-
-Barrancas has enabled schools to:
-
-- Proactively identify students in need of support.
-- Implement early and personalized interventions.
-- Improve retention and academic success rates.
-- Foster more inclusive and safer school environments.
+Barrancas lets you configure surveys for each institution's context, centralize responses, identify risk signals and show the information in dashboards and reports. That reduces the scattering of the process, and leadership teams and teachers understand their students' situation better and can act earlier.
 
 ## My role
 
-I was responsible for the **end-to-end full-stack development** of the platform, from backend architecture to the implementation of the user interface. I also led the platform’s continuous evolution, adding new functionalities based on educator feedback.
+I was responsible for the platform's full-stack development, from the backend architecture to the interface, and I took part in its continuous evolution based on real use and feedback from the educational teams.
 
-## Ongoing development
+A good part of the work was translating existing processes, with their own logic and limitations, into a digital experience that didn't add unnecessary complexity. More than building features, what mattered was that the system be clear, operable and useful where time and capacity for follow-up are limited.
 
-The project continues to evolve with improvements such as:
+## Technical decisions
 
-- Integrations with existing academic systems.
-- Direct communication tools for educators, students, and families.
-- **Intervention and student tracking module.**
+Backend with AdonisJS, to keep a clear organization as the product grew. Frontend with Edge + Vue: server-side rendering for stability, and interactivity only where it was needed, without oversizing.
+
+On that foundation: configurable surveys, visualizations for teams, automated reports and case follow-up. The key decision wasn't the stack but how to structure the system to grow without losing clarity.
+
+## Product evolution
+
+We're working on a new follow-up and support module. The idea is not to stop at detection but to also support the continuity of the intervention.

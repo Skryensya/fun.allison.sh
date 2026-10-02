@@ -1,0 +1,68 @@
+---
+name: 'Radio'
+hook: 'En radio med håndplukkede kanaler der alle hører den samme sangen i det samme sekundet. Det finnes ingen neste-knapp og ingen server som koordinerer: hver klient regner ut posisjonen ut fra sin egen klokke.'
+cvDescription: 'En radio med håndplukkede kanaler der alle hører den samme sangen i det samme sekundet. Det finnes ingen neste-knapp og ingen server som koordinerer: hver klient regner ut posisjonen ut fra sin egen klokke.'
+publishDate: '2026-11-01'
+isFeatured: true
+---
+
+## Problemet
+
+<figure>
+  <img src="/img/projects/radio-1-en.webp" alt="«Alt Sounds» spiller i Radio: coverbilde, kontroller og en shader-bakgrunn tegnet med fargene fra coveret." loading="lazy" />
+  <figcaption>Bakgrunnen er en shader som henter paletten sin fra coveret</figcaption>
+</figure>
+
+Jeg ville ha en radio: skru på noe, la det spille, ingen neste-knapp. Problemet var at jeg måtte bygge den selv.
+
+## Løsningen
+
+<figure>
+  <img src="/img/projects/radio-2-en.webp" alt="Kanalen «Luna Stereo» i Radio: den samme spilleren, med shaderen farget av et annet cover." loading="lazy" />
+  <figcaption>En annen kanal, en annen palett: bakgrunnen endrer seg for hvert spor</figcaption>
+</figure>
+
+Flere kanaler med håndplukkede spillelister. Det som gjør dem til en radio, og ikke en spiller med shuffle, er at posisjonen i spillelisten er deterministisk: den kommer fra klokken. Alle som lytter i samme øyeblikk får den samme sangen i det samme sekundet, uten at noen server koordinerer noe som helst. Serveren leverer metadataene til spillelisten én gang, og klienten regner ut resten mot sin lokale klokke.
+
+<figure>
+  <img src="/img/projects/radio-4-en.webp" alt="«Melancoly time» i Radio: shaderen i gråtoner, tegnet fra et svart-hvitt cover." loading="lazy" />
+  <figcaption>En kanal uten farge: shaderen blir stille den også</figcaption>
+</figure>
+
+Bakgrunnen er en animert GLSL-shader med farger hentet fra coveret til hvert spor. Den reagerer ikke på lyden i sanntid: det er en animasjon parametrisert av kanalens palett og stemning, men den skifter karakter for hvert spor og føles som en del av det som spilles.
+
+## Tekniske valg
+
+<figure>
+  <img src="/img/projects/radio-5-en.webp" alt="«Unapologetically Pop!» i Radio: shaderen i rosa og lilla toner, tegnet fra coveret." loading="lazy" />
+  <figcaption>Og én i rosa og lilla</figcaption>
+</figure>
+
+Synkroniseringen er sekunder siden midnatt pluss en forskyvning per kanal, modulo den totale lengden på spillelisten. Det gir sporets indeks og det nøyaktige sekundet i det. Når noen åpner appen midt i en sang, hopper spilleren til det sekundet så snart lyden har lastet metadataene sine. En løkke kjører hvert 200. millisekund og korrigerer hvis avviket overstiger 2,5 sekunder.
+
+<figure>
+  <img src="/img/projects/radio-6-en.webp" alt="Tekstpanelet i Radio: sangteksten over shaderen, med den aktuelle linjen utheva." loading="lazy" />
+  <figcaption>Sangteksten, over den samme bakgrunnen</figcaption>
+</figure>
+
+Lyden bruker to `<audio>`-elementer som bytter på. Mellom kanaler er det en crossfade med `requestAnimationFrame`: den utgående tones ned mens den innkommende tones opp, og begge peker på stedet i spillelisten der de skal være akkurat da. Mellom spor i samme kanal er overgangen direkte: indeksen endres, hopp til 0, og det neste starter uten stillhet.
+
+<figure>
+  <img src="/img/projects/radio-7-en.webp" alt="Likes i Radio: fire sanger lagret fra ulike kanaler, med shaderen farget av det siste coveret." loading="lazy" />
+  <figcaption>Sangene du lagrer, fra alle kanaler</figcaption>
+</figure>
+
+Stacken er enkel: Hono på Node.js, PostgreSQL med Drizzle ORM og React på klienten. Lyd og filer på R2.
+
+## Det vanskelige
+
+<figure>
+  <img src="/img/projects/radio-3-en.webp" alt="Radio på en telefon: spilleren i én kolonne over en shader-bakgrunn." loading="lazy" />
+  <figcaption>På telefon, den samme spilleren i én kolonne</figcaption>
+</figure>
+
+Å ha ideen klar gjorde ikke byggingen enklere. Radioen må fungere nøyaktig slik konseptet beskriver det: samme sang, samme sekund, ingen koordinering. Hver del av lydflyten må oppføre seg slik, ellers brytes illusjonen.
+
+Det er et personlig prosjekt, uten brukere og uten målinger. Det finnes fordi jeg ville ha den gjenstanden, og å bygge den uten produktkompromisser var en del av poenget.
+
+[https://radio.allison.sh](https://radio.allison.sh)

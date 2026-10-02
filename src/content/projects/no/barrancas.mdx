@@ -1,56 +1,35 @@
 ---
 name: 'Barrancas'
-hook: 'Jeg utviklet Barrancas, en spørreundersøkelsesplattform for skoler som identifiserer elever i risikosituasjoner og muliggjør tidlige intervensjoner.'
-cvDescription: 'Helhetlig plattform for utdanningsinstitusjoner med fokus på å oppdage og støtte elever i risiko. Full-stack utvikling, arkitekturdesign og kontinuerlig videreutvikling.'
-publishDate: 2023-03-01
-isFeatured: false
-color: '#009966'
-tags: ['vue', 'tailwind', 'adonisjs', 'mysql', 'full-stack']
+hook: 'Risikosignalene til en elev ble notert på papir og gikk tapt. Barrancas samler dem i ett enkelt system slik at de kan oppdages i tide og følges opp.'
+cvDescription: 'Risikosignalene til en elev ble notert på papir og gikk tapt. Barrancas samler dem i ett enkelt system slik at de kan oppdages i tide og følges opp.'
+publishDate: '2026-04-01'
+isFeatured: true
 ---
 
-# Barrancas
+## Problemet
 
-**Barrancas** er en helhetlig spørreundersøkelsesplattform designet for utdanningsinstitusjoner, med mål om å **oppdage og støtte elever i akademisk, sosial eller emosjonell risiko på et tidlig stadium**. Verktøyet kombinerer teknologi og pedagogikk for å styrke elevenes trivsel og forbedre beslutningstaking hos ledere og lærere.
+Barrancas oppstod for å digitalisere og samle prosesser som allerede fantes i utdanningsinstitusjoner, men som ble gjort for hånd og på papir. Informasjon om elever, trivsel og varselsignaler ble samlet inn, men prosessen var treg, fragmentert og vanskelig å skalere.
 
-## Hovedfunksjoner
+Det påvirket både effektivitet og rekkevidde. Å samle resultater tok tid, å følge opp en sak krevde manuelt arbeid, og informasjonen var ikke alltid tydelig nok til å handle raskt på. Å samle inn data var den enkle delen. Det vanskelige var å organisere dem slik at elever i risiko kunne oppdages i tide og følges opp med bedre skjønn og mindre operasjonell friksjon.
 
-- **Tilpassbare spørreundersøkelser** tilpasset ulike utdanningsnivåer.
-- **Tidlig varslingssystem** som identifiserer elever i risiko.
-- **Analytisk dashboard** for lærere og administratorer med tydelige måleparametere.
-- **Automatiserte rapporter** med handlingsrettede innsikter.
+## Løsningen
 
-## Brukte teknologier
+Plattformen samler hele den flyten i ett enkelt system. Å digitalisere en eksisterende institusjonell prosess var mye mer enn å flytte skjemaer over på en skjerm: den måtte bli mer effektiv, mer sporbar og lettere å opprettholde over tid.
 
-- **Vue.js** for et responsivt og tilgjengelig brukergrensesnitt.
-- **Tailwind CSS** for responsivt og konsistent design.
-- **AdonisJS** som robust og skalerbart backend-rammeverk.
-- **MySQL** for sikker lagring av sensitive data.
+Barrancas lar deg konfigurere spørreundersøkelser for hver institusjons kontekst, samle svarene på ett sted, identifisere risikosignaler og vise informasjonen i dashbord og rapporter. Det reduserer spredningen i prosessen, og ledelsesteamene og lærerne forstår elevenes situasjon bedre og kan handle tidligere.
 
-## Nøkkelfunksjonalitet
+## Rollen min
 
-- Spørreundersøkelser i flere formater (flervalg, skalaer, fritekst).
-- Analysealgoritmer for risikodeteksjon.
-- Kontrollpanel med interaktive visualiseringer for lærere.
-- Varslingssystem og individuell oppfølging av saker.
-- Dataeksport for ekstern analyse.
+Jeg var ansvarlig for fullstack-utviklingen av plattformen, fra backend-arkitekturen til grensesnittet, og jeg deltok i den kontinuerlige utviklingen basert på reell bruk og tilbakemeldinger fra de pedagogiske teamene.
 
-## Sosial effekt
+En god del av arbeidet var å oversette eksisterende prosesser, med sin egen logikk og sine egne begrensninger, til en digital opplevelse som ikke la til unødvendig kompleksitet. Mer enn å bygge funksjoner handlet det om at systemet skulle være tydelig, mulig å betjene og nyttig der tid og kapasitet til oppfølging er begrenset.
 
-Barrancas har gjort det mulig for utdanningsinstitusjoner å:
+## Tekniske valg
 
-- Proaktivt identifisere elever som trenger støtte.
-- Implementere tidlige og tilpassede intervensjoner.
-- Forbedre gjennomføringsgrad og akademisk suksess.
-- Skape mer inkluderende og trygge skolemiljøer.
+Backend med AdonisJS, for å holde en tydelig organisering mens produktet vokste. Frontend med Edge + Vue: server-side rendering for stabilitet, og interaktivitet bare der det trengtes, uten å overdimensjonere.
 
-## Min rolle
+På det fundamentet: konfigurerbare spørreundersøkelser, visualiseringer for teamene, automatiserte rapporter og oppfølging av saker. Det avgjørende valget var ikke stacken, men hvordan systemet skulle struktureres for å vokse uten å miste klarhet.
 
-Jeg hadde ansvaret for **full-stack utviklingen** av plattformen, fra backend-arkitektur til implementering av brukergrensesnittet. Jeg ledet også den kontinuerlige utviklingen, med nye funksjoner basert på tilbakemeldinger fra lærere.
+## Produktets utvikling
 
-## Kontinuerlig utvikling
-
-Prosjektet er fortsatt i utvikling, med forbedringer som:
-
-- Integrasjoner med eksisterende akademiske systemer.
-- Direkte kommunikasjonsverktøy mellom lærere, elever og familier.
-- **Modul for intervensjon og oppfølging av elever.**
+Vi jobber med en ny modul for oppfølging og støtte. Tanken er ikke å stoppe ved oppdagelsen, men også å støtte kontinuiteten i innsatsen.

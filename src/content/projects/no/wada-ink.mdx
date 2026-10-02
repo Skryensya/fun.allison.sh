@@ -1,0 +1,52 @@
+---
+name: 'Wada.ink'
+hook: 'Sanzo Wadas ordbok over fargekombinasjoner, laget for å utforskes etter navn, lignende farge eller bilde. WIP: satt på vent mens jeg jobber med Skryensya/ui.'
+cvDescription: 'Sanzo Wadas ordbok over fargekombinasjoner, laget for å utforskes etter navn, lignende farge eller bilde. WIP: satt på vent mens jeg jobber med Skryensya/ui.'
+publishDate: '2026-10-01'
+isFeatured: true
+---
+
+## Kontekst
+
+<figure>
+  <img src="/img/projects/wada-ink-1-en.webp" alt="Forsiden til Wada.ink: «En levende fargekatalog», med viften av palettplater." loading="lazy" />
+  <figcaption>Forside: 586 farger og 581 kombinasjoner å utforske</figcaption>
+</figure>
+
+Wada.ink er en interaktiv katalog over Sanzo Wadas fargekombinasjoner, laget for at det skal være lett å bla i og oppdage nye ting.
+
+<a href="https://en.wikipedia.org/wiki/Sanzo_Wada" class="editorial-link" target="_blank" rel="noopener noreferrer">Sanzo Wada<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a> var en japansk maler som grunnla Japan Standard Color Association i 1927. Mellom 1933 og 1934 ga han ut «Haishoku Soukan», seks foliobind med over tusen fargekombinasjoner, alltid tenkt i par og aldri som isolerte toner. I 2010 samlet forlaget Seigensha et utvalg i to bind under tittelen «A Dictionary of Color Combinations»: 348 kombinasjoner i det første og 233 i det andre. Den samlingen, og ikke de opprinnelige foliobindene fra tretti-tallet, er den som sirkulerer blant designere i dag og den som mater nesten alle digitale kataloger over Wada, min inkludert.
+
+Det fantes allerede flere versjoner av den katalogen på nett, og de var fine: de viste kombinasjonene, hadde verdiene til hver farge og gjorde jobben sin. Men grensesnittet kunne vært bedre. Den enkelte fargen var en løs opplysning inne i paletten, uten eget navn eller egen side, og man søkte nesten alltid etter platenummer, aldri etter farge. Det fikk meg til å lage min egen katalog.
+
+## Løsningen
+
+<figure>
+  <img src="/img/projects/wada-ink-2-en.webp" alt="Fargesiden til Turquoise Green med HEX-, RGB-, CMYK- og LAB-verdiene sine og de 22 kombinasjonene den inngår i." loading="lazy" />
+  <figcaption>Hver farge har sin egen side, med verdiene sine og kombinasjonene sine</figcaption>
+</figure>
+
+Å finne en farge avhenger ikke lenger av å huske et platenummer. Du kan søke på navn, velge en fargeprøve og se hvilke farger i katalogen som ligner mest, eller laste opp et bilde slik at siden henter ut den dominerende paletten og sammenligner den med ordboken. Hver farge har også sin egen side, med verdiene sine og kombinasjonene den inngår i.
+
+<figure>
+  <img src="/img/projects/wada-ink-3-en.webp" alt="Palett nr. 223 fra bind I: tre fargestriper i full skjerm." loading="lazy" />
+  <figcaption>En av Wadas kombinasjoner, sett i full skjerm</figcaption>
+</figure>
+
+Wadas katalog har et fast antall kombinasjoner: de han dokumenterte for nesten hundre år siden. Derfor legger jeg til et fellesskapslag. Med Google- eller GitHub-kontoer kan hvem som helst sette sammen sine egne kombinasjoner av de samme fargene, og hver farge eller palett har kommentarer slik at samtalen blir akkurat der.
+
+## Tekniske valg
+
+Det startet som en statisk side i Astro. Da jeg la til brukerkontoer og paletter, måtte den over i servermodus, med sin egen Postgres på samme sted som jeg allerede har alt det andre. Til innlogging brukte jeg Better Auth, som kjører inne i den samme Astro-prosessen og slipper en egen tjeneste for noe så lite.
+
+Resten av valgene fulgte den linjen: ett enkelt rammeverk for hele siden i stedet for frontend og backend i hvert sitt prosjekt, og ingen ekstern tjeneste som gjør noe jeg allerede kan løse med det jeg har i drift. Ingenting her avhenger av en tredjepart som en dag bestemmer seg for å endre prisene sine eller legge ned.
+
+## Nåværende status
+
+Wada.ink er en WIP og står på vent for nå: tiden min går til [Skryensya/ui](/no/prosjekter/skryensya-ui). Neste mål er å implementere grensesnittet på nytt med mitt eget designsystem.
+
+## For moro skyld
+
+Jeg gjør det ikke for å selge det eller med en bestemt bruker i tankene. Jeg liker Wadas ordbok, jeg ville ha min egen versjon, på min måte, og jeg bryr meg mer om at den er behagelig å bruke enn om noe annet. Å tenke gjennom regler som «hva skjer hvis to personer setter sammen den samme kombinasjonen uten å vite det» er underholdende når ingen venter på resultatet, og siden fortsetter å vokse slik, litt etter litt, når jeg har lyst.
+
+[https://wada.ink](https://wada.ink)

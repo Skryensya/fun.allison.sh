@@ -10,8 +10,8 @@ export const no = {
     'home.cvButton': 'Se CV-en min',
     'home.stats.location': 'Lokasjon',
     'home.stats.status': 'Status',
-    'hero.heading': 'Hei, jeg er Allison. Velkommen til nettsiden min',
-    'hero.description': 'Jeg elsker å lage nettsteder som fungerer godt og er enkle å bruke. Jeg jobber hovedsakelig med React og TypeScript.',
+    'hero.heading': 'Jeg bygger ting som føles åpenbare.',
+    'hero.description': 'Jeg jobber med designsystemer og institusjonelle plattformer, og bygger egne verktøy av nysgjerrighet. Jeg bryr meg om kanttilfeller og tilgjengelighet fra begynnelsen, ikke som noe som legges til på slutten.',
     'hero.cards.frontend.title': 'Frontend',
     'hero.cards.frontend.description': 'React, TypeScript, Astro',
     'hero.cards.backend.title': 'Backend',
@@ -19,11 +19,10 @@ export const no = {
     'hero.cards.design.title': 'Design',
     'hero.cards.design.description': 'UI/UX, Figma, Prototyping',
     'about.title': 'Om Meg',
-    'about.tldr': 'Jeg lager tydelige og tilgjengelige nettopplevelser, med blikk for detaljer og menneskene som faktisk skal bruke dem.',
+    'about.tldr': 'Jeg liker å forstå hvordan ting fungerer og ta dem litt lenger. Jeg liker å bygge, iterere og forenkle. Jeg har en genuin fascinasjon for design og liker å jobbe tett på det.',
     'about.tldrLabel': 'Kort fortalt',
     'about.expanded': [
-        'De siste fire årene har jeg jobbet i konsulentbransjen og bidratt i store prosjekter som <a href="/no/prosjekter/kit-digital-uc">Kit Digital UC</a>, designsystemet som nå brukes av mer enn 100 nettsider ved Universidad Católica. Den erfaringen styrket frontend-grunnlaget mitt og måten jeg tenker produkt på: tydelige beslutninger, konsistens på tvers av team og løsninger som holder over tid.',
-        'Jeg motiveres av å bygge gjennomtenkte produkter der tilgjengelighet, klarhet og åpen kommunikasjon er en del av prosessen fra start. Utenom jobb bruker jeg mye tid på å lære norsk, spille sjakk, utforske musikk og lage personlige prosjekter for å tilfredsstille behovet mitt for å skape interessante ting. Dette nettstedet er et godt eksempel på det.'
+        'Utenom jobb bruker jeg tiden på å lære norsk, spille sjakk og utforske musikk. Jeg bygger også personlige prosjekter hele tiden, mer av nysgjerrighet enn av nødvendighet. Denne siden er en forlengelse av det.'
     ],
     'about.cta.message': 'Hvis noe her treffer deg, ta gjerne kontakt — jeg tar gjerne en prat.',
     'about.cta.button': 'La oss ta en prat',
@@ -32,7 +31,7 @@ export const no = {
     'about.cta.copy.success': 'E-post kopiert til utklippstavlen',
     'about.cta.copy.error': 'Kunne ikke kopiere e-post',
     'about.viewMore.open': 'Les mer',
-    'site.description': 'Allison Peña er fullstack webutvikler.',
+    'site.description': 'Jeg designer og bygger tydelige, tilgjengelige og raske nettgrensesnitt. Jeg er opptatt av systemer og av beslutningene som gjør en opplevelse nyttig.',
     'ui.loading': 'Laster...',
     'theme.toast.unlocked': 'Du har låst opp {count} ekstra temaer!',
     'theme.toast.locked': 'Du har låst de ekstra temaene til neste gang!',
