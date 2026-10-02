@@ -12,11 +12,6 @@ The Kit Digital UC was my first experience with a design system in production. W
 
 It's a reference among institutional design systems in Chile. It solves a concrete problem: keeping visual and technical coherence at scale, in an organization with many teams and misaligned development cycles. Later systems have taken lessons from this model, directly or indirectly.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/00.png" alt="Homepage of the Kit Digital UC documentation site at kitdigital.uc.cl" loading="lazy" />
-  <figcaption>Kit Digital UC documentation site — kitdigital.uc.cl</figcaption>
-</figure>
-
 ## The problem
 
 That adoption meant any problem stopped being local. The system wasn't badly designed, but it had grown faster than its quality criteria. Accessibility failures lived in base components used everywhere, so they were replicated across the whole system. A single bundle forced loading unnecessary code even on simple sites, and some implementation patterns made it impossible to evolve without side effects.
@@ -33,19 +28,9 @@ On accessibility, we fixed decisions that affected the semantics of widely used 
 
 On performance, we moved from a single bundle to modular loading driven by the DOM: a loader inspects the page at runtime and loads only the components it needs. That adds requests but reduces the initial weight. On average, load times dropped ~500 ms.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/01.png" alt="uc.cl home, one of the sites built on the Kit Digital UC" loading="lazy" />
-  <figcaption>uc.cl home</figcaption>
-</figure>
-
 ## How we did it without breaking anything
 
 Given the risk, we validated every change against real Kit implementations and reviewed representative scenarios before integrating it. Decisions followed simple rules: backward compatibility by default, small cumulative changes, and no solution that depended on context.
-
-<figure>
-  <img src="/img/projects/kit-digital-uc/03.png" alt="uc.cl footer, a component that is part of the Kit Digital UC" loading="lazy" />
-  <figcaption>uc.cl footer</figcaption>
-</figure>
 
 ## My role
 

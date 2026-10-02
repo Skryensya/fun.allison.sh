@@ -14,17 +14,7 @@ Tenía una impresora térmica de recibos, de las baratas, juntando polvo en el e
 
 En el fondo es una API. Le mandas un POST con lo que quieras imprimir (texto, una tarjeta, una lista, un QR, una imagen) y queda en una cola. Un agente chiquito, corriendo en la máquina conectada a la impresora, escucha esa cola por WebSocket y maneja la impresora por USB con el protocolo ESC/POS. Arriba hay un panel para ver la cola en vivo, componer impresiones a mano y repartir llaves de acceso.
 
-<figure>
-  <img src="/img/projects/printer-1.webp" alt="Ping en modo claro: fondo claro con el título «Mándame un Ping», un campo de nombre opcional, un mensaje escrito y el límite de un ping cada 30 minutos." loading="lazy" />
-  <figcaption>Modo claro: un mensaje, un envío cada 30 minutos</figcaption>
-</figure>
-
 El primer consumidor de esa API es Ping, la parte pública. Vive en <a href="https://ping.allison.sh" class="editorial-link" target="_blank" rel="noopener noreferrer">ping.allison.sh<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a>, no pide cuenta ni llave y por dentro llama al mismo endpoint que cualquier otro consumidor. Tiene su propia llave, su propio límite de uso, reCAPTCHA y un cooldown por IP para frenar bots. La API no sabe que Ping existe: para ella es un consumidor más.
-
-<figure>
-  <img src="/img/projects/printer-2.webp" alt="Ping en modo oscuro: el mismo formulario sobre fondo oscuro, con el mensaje escrito y el botón de envío." loading="lazy" />
-  <figcaption>Modo oscuro, mismo formulario: de día o de noche, lo que mandas sale como boleta</figcaption>
-</figure>
 
 ## Decisiones técnicas
 

@@ -8,58 +8,23 @@ isFeatured: true
 
 ## The problem
 
-<figure>
-  <img src="/img/projects/radio-1-en.webp" alt="“Alt Sounds” playing in Radio: artwork, controls and a shader background drawn from the artwork's colors." loading="lazy" />
-  <figcaption>The background is a shader that takes its palette from the artwork</figcaption>
-</figure>
-
 I wanted a radio: turn something on, let it play, no next button. The problem was that I had to build it.
 
 ## The solution
 
-<figure>
-  <img src="/img/projects/radio-2-en.webp" alt="The “Luna Stereo” station in Radio: the same player, with the shader tinted by a different cover." loading="lazy" />
-  <figcaption>Another station, another palette: the background changes with every track</figcaption>
-</figure>
-
 Several stations with hand-curated playlists. What makes them a radio, and not a player with shuffle, is that the position in the playlist is deterministic: it comes from the clock. Everyone listening at the same moment gets the same song at the same second, without any server coordinating anything. The server hands over the playlist metadata once and the client works out the rest against its local clock.
-
-<figure>
-  <img src="/img/projects/radio-4-en.webp" alt="“Melancoly time” in Radio: the shader in grayscale, drawn from a black-and-white cover." loading="lazy" />
-  <figcaption>A station with no color: the shader goes quiet too</figcaption>
-</figure>
 
 The background is an animated GLSL shader with colors extracted from each track's artwork. It doesn't react to the audio in real time: it's an animation parameterized by the station's palette and mood, but it changes character with each track and feels like part of what's playing.
 
 ## Technical decisions
 
-<figure>
-  <img src="/img/projects/radio-5-en.webp" alt="“Unapologetically Pop!” in Radio: the shader in pinks and purples, drawn from the cover." loading="lazy" />
-  <figcaption>And one in pink and purple</figcaption>
-</figure>
-
 The synchronization is seconds since midnight plus a per-station offset, modulo the playlist's total duration. That gives the track index and the exact second within it. When someone opens the app mid-song, the player seeks to that second as soon as the audio loads its metadata. A loop runs every 200 ms and corrects if the drift exceeds 2.5 seconds.
 
-<figure>
-  <img src="/img/projects/radio-6-en.webp" alt="The lyrics panel in Radio: the song’s lyrics over the shader, with the current line highlighted." loading="lazy" />
-  <figcaption>The lyrics, over the same background</figcaption>
-</figure>
-
 The audio uses two `<audio>` elements that take turns. Between stations there's a crossfade with `requestAnimationFrame`: the outgoing one fades down while the incoming one fades up, both pointing at the spot in the playlist where it should be at that moment. Between tracks in the same station the cut is direct: the index changes, seek to 0, and the next one starts with no silence.
-
-<figure>
-  <img src="/img/projects/radio-7-en.webp" alt="Likes in Radio: four songs saved from different stations, with the shader tinted by the latest cover." loading="lazy" />
-  <figcaption>The songs you save, from every station</figcaption>
-</figure>
 
 The stack is simple: Hono on Node.js, PostgreSQL with Drizzle ORM and React on the client. Audio and files on R2.
 
 ## The hard part
-
-<figure>
-  <img src="/img/projects/radio-3-en.webp" alt="Radio on a phone: the player in a single column over a shader background." loading="lazy" />
-  <figcaption>On a phone, the same player in a single column</figcaption>
-</figure>
 
 Having the idea clear didn't simplify the build. The radio has to work exactly as the concept describes it: same song, same second, no coordination. Every part of the audio flow has to behave that way or the illusion breaks.
 

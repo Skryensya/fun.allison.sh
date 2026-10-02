@@ -14,17 +14,7 @@ isFeatured: true
 
 中身はAPIです。印刷したいもの(テキスト、カード、リスト、QRコード、画像)をPOSTで送ると、キューに入ります。プリンターにつないだマシンで動く小さなエージェントが、そのキューをWebSocketで待ち受け、ESC/POSプロトコルでUSB経由のプリンターを動かします。その上にダッシュボードがあり、キューをライブで見たり、手で印刷を組み立てたり、アクセスキーを配ったりできます。
 
-<figure>
-  <img src="/img/projects/printer-1-en.webp" alt="ライトモードのPing:明るい背景に「Send me a Ping」のタイトル、任意の名前欄、入力したメッセージ、30分に1回という制限。" loading="lazy" />
-  <figcaption>ライトモード:メッセージは1通、送信は30分に1回</figcaption>
-</figure>
-
 そのAPIの最初の利用者が、公開部分のPingです。<a href="https://ping.allison.sh" class="editorial-link" target="_blank" rel="noopener noreferrer">ping.allison.sh<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a>にあり、アカウントもキーも求めず、内部では他の利用者と同じエンドポイントを呼びます。専用のキー、専用の利用制限、reCAPTCHA、ボット対策のIPごとのクールダウンがあります。APIはPingの存在を知りません。APIにとってPingは、数ある利用者のひとつです。
-
-<figure>
-  <img src="/img/projects/printer-2-en.webp" alt="ダークモードのPing:暗い背景の同じフォームに、入力したメッセージと送信ボタン。" loading="lazy" />
-  <figcaption>ダークモード、同じフォーム:昼でも夜でも、送ったものはレシートになって出てくる</figcaption>
-</figure>
 
 ## 技術的な判断
 

@@ -8,58 +8,23 @@ isFeatured: true
 
 ## 課題
 
-<figure>
-  <img src="/img/projects/radio-1-en.webp" alt="Radioで「Alt Sounds」が再生中:アートワーク、コントロール、アートワークの色から描かれたシェーダーの背景。" loading="lazy" />
-  <figcaption>背景は、アートワークからパレットを取り出すシェーダー</figcaption>
-</figure>
-
 ラジオがほしかったんです。何かをつけて、流しっぱなしにして、「次へ」ボタンはなし。問題は、それを自分で作らなければならなかったことでした。
 
 ## 解決策
 
-<figure>
-  <img src="/img/projects/radio-2-en.webp" alt="Radioの「Luna Stereo」局:同じプレーヤーで、シェーダーは別のカバーで色づけされている。" loading="lazy" />
-  <figcaption>別の局、別のパレット:背景は曲ごとに変わる</figcaption>
-</figure>
-
 手作業で選んだプレイリストを持つ、いくつもの局があります。シャッフル付きのプレーヤーではなくラジオにしているのは、プレイリスト内の位置が決定的、つまり時計から決まることです。同じ瞬間に聴いている人は、サーバーが何も調整しなくても、同じ曲の同じ秒を聴きます。サーバーはプレイリストのメタデータを一度渡すだけで、残りはクライアントが自分の時計と照らして計算します。
-
-<figure>
-  <img src="/img/projects/radio-4-en.webp" alt="Radioの「Melancoly time」:白黒のカバーから描かれた、グレースケールのシェーダー。" loading="lazy" />
-  <figcaption>色のない局:シェーダーも静かになる</figcaption>
-</figure>
 
 背景は、各曲のアートワークから抽出した色を使うアニメーションのGLSLシェーダーです。音にリアルタイムで反応するわけではなく、局のパレットとムードをパラメータにしたアニメーションですが、曲ごとに表情が変わり、流れているものの一部のように感じられます。
 
 ## 技術的な判断
 
-<figure>
-  <img src="/img/projects/radio-5-en.webp" alt="Radioの「Unapologetically Pop!」:カバーから描かれた、ピンクと紫のシェーダー。" loading="lazy" />
-  <figcaption>そして、ピンクと紫の一枚</figcaption>
-</figure>
-
 同期は、午前0時からの秒数に局ごとのオフセットを足し、プレイリスト全体の長さで割った余りです。これでトラックの番号と、その中の正確な秒が決まります。曲の途中でアプリを開いた人は、音声がメタデータを読み込んだ時点でその秒へシークします。ループは200msごとに回り、ずれが2.5秒を超えたら補正します。
 
-<figure>
-  <img src="/img/projects/radio-6-en.webp" alt="Radioの歌詞パネル:シェーダーの上に曲の歌詞が表示され、現在の行がハイライトされている。" loading="lazy" />
-  <figcaption>同じ背景の上に、歌詞</figcaption>
-</figure>
-
 音声は、交代で使う2つの`<audio>`要素です。局のあいだは`requestAnimationFrame`でクロスフェードします。出ていく方が下がり、入ってくる方が上がり、どちらもその時点でプレイリストにいるべき位置を指しています。同じ局の曲間は直接切り替えます。インデックスを変えて、0にシークし、次の曲が無音なしで始まります。
-
-<figure>
-  <img src="/img/projects/radio-7-en.webp" alt="Radioのお気に入り:別々の局から保存した4曲。シェーダーは最新のカバーで色づけされている。" loading="lazy" />
-  <figcaption>どの局からでも、保存した曲</figcaption>
-</figure>
 
 スタックはシンプルです。Node.js上のHono、Drizzle ORMを使ったPostgreSQL、クライアントはReact。音声とファイルはR2に置いています。
 
 ## むずかしかったこと
-
-<figure>
-  <img src="/img/projects/radio-3-en.webp" alt="スマートフォンのRadio:シェーダーの背景の上に、1列のプレーヤー。" loading="lazy" />
-  <figcaption>スマートフォンでは、同じプレーヤーが1列になる</figcaption>
-</figure>
 
 アイデアがはっきりしていても、作るのが簡単になるわけではありませんでした。ラジオは、コンセプトどおりに動かなければなりません。同じ曲、同じ秒、調整なし。音声の流れのどの部分もそのとおりに振る舞わないと、錯覚が壊れます。
 

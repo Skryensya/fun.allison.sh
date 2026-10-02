@@ -8,17 +8,7 @@ isFeatured: true
 
 ## Ideen
 
-<figure>
-  <img src="/img/projects/skryensya-ui-anatomia-accordion-en.png" alt="Anatomien til Accordion: sju nummererte deler over eksemplaret, med klassenavnene sine." loading="lazy" />
-  <figcaption>Anatomien til Accordion – hver del har et navn og en klasse</figcaption>
-</figure>
-
 Skryensya/ui er et designsystem som starter med kontrakten: hver komponent begynner med en definisjon, kontrakten, og ikke med CSS og JavaScript pakket inn i et API. Kontrakten sier hvilke deler komponenten har, hvilke alternativer den tar imot, hvilke attributter den skriver, hvilke tilgjengelighetsregler den må oppfylle og hvilke kombinasjoner som gir mening.
-
-<figure>
-  <img src="/img/projects/skryensya-ui-anatomia-comment-thread-en.png" alt="Anatomien til CommentThread: ni nummererte deler over en kommentar med et svar, med klassenavnene sine." loading="lazy" />
-  <figcaption>Anatomien til CommentThread – fra avataren til svarene</figcaption>
-</figure>
 
 I institusjonelle systemer er den vanlige måten å temme kaoset på én enkelt stack for alle leverandører. Det gir mening: det reduserer variasjon og holder en felles linje. Men det tvinger team som ikke alltid starter fra samme sted til å ta den samme tekniske beslutningen, det snevrer inn utvalget av mulige leverandører og det øker kostnaden for institusjonen. Jeg ville løse den spenningen på en annen måte: tillate React, Vue eller Vanilla uten å ende opp med tre parallelle implementasjoner.
 
@@ -26,33 +16,13 @@ Ideen kommer fra det jeg lærte av å lage og vedlikeholde designsystemer i prod
 
 ## Det som er interessant
 
-<figure>
-  <img src="/img/projects/skryensya-ui-componentes-en.png" alt="Siden «Utforsk komponenter» med katalogen gruppert etter oppgave." loading="lazy" />
-  <figcaption>Katalogen, organisert etter oppgaven hver del løser</figcaption>
-</figure>
-
 På <a href="https://ui.skryensya.dev" class="editorial-link" target="_blank" rel="noopener noreferrer">ui.skryensya.dev</a> finnes det over hundre dokumenterte komponenter. Hver side har kontrakten sin, alternativene, tilgjengelighetsnotatene og rendrede eksempler. Det finnes to implementasjoner, React og Vanilla, som kommer fra den samme definisjonen og må gi samme resultat.
 
-<figure>
-  <img src="/img/projects/skryensya-ui-anatomia-button-en.png" alt="Anatomien til Button: fem nummererte deler over eksemplaret." loading="lazy" />
-  <figcaption>Anatomien til Button – boksen og sporene dens</figcaption>
-</figure>
-
 Jeg bestemte at tilgjengelighet skulle være en del av kontrakten fra første dag. Hver komponent erklærer hvilket tilgjengelig navn den trenger, hvilke tilstander den kunngjør og hvilken minstestørrelse berøringsflaten har, slik at disse reglene ikke avhenger av at hvert team husker dem. Flere av dem er dekket av tester: kontrasten til hver variant og tone måles til 4,5:1 i lyst og mørkt modus, og bevegelse respekterer preferansen for redusert bevegelse. Med et system som brukes av så ulike team ville jeg ikke være avhengig av noens hukommelse.
-
-<figure>
-  <img src="/img/projects/skryensya-ui-button-do-dont-en.png" alt="Gjør/ikke gjør-par for Button: én primærhandling per region." loading="lazy" />
-  <figcaption>Button – én primærhandling per region</figcaption>
-</figure>
 
 Katalogen kan også spørres som struktur gjennom en MCP-server. Derfra kan du spørre hvilke komponenter som finnes, hvordan de settes sammen, hvilke kombinasjoner som er gyldige og hvilken markup de bør produsere. Valideringene sammenligner bruksstrukturer på tvers av bindinger og gjør «dette bør være konsistent» om til bevis.
 
 ## Nåværende status
-
-<figure>
-  <img src="/img/projects/skryensya-ui-tag-do-dont-en.png" alt="Gjør/ikke gjør-par for Tag: den er noe man handler på." loading="lazy" />
-  <figcaption>Tag – kan den fjernes, er den en Tag; leses den bare, er den en Badge</figcaption>
-</figure>
 
 Det er en stor og bevisst ambisiøs WIP, men den har allerede et fundament som virker: Core som sannhetskilde, offentlig dokumentasjon, implementasjoner i React og Vanilla, og porter som sjekker konsistens. Neste steg er å bruke den samme strukturen til ting som vanligvis bygges hver for seg: en Figma-plugin, et visuelt redigeringsverktøy og en MCP som validerer grensesnitt programmatisk.
 

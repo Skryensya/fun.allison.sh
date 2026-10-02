@@ -12,11 +12,6 @@ Kit Digital UC var min første erfaring med et designsystem i produksjon. Da jeg
 
 Det er en referanse blant institusjonelle designsystemer i Chile. Det løser et konkret problem: å holde visuell og teknisk sammenheng i stor skala, i en organisasjon med mange team og utviklingssykluser som ikke henger sammen. Senere systemer har hentet lærdom fra denne modellen, direkte eller indirekte.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/00.png" alt="Forsiden til dokumentasjonssiden for Kit Digital UC på kitdigital.uc.cl" loading="lazy" />
-  <figcaption>Dokumentasjonssiden for Kit Digital UC – kitdigital.uc.cl</figcaption>
-</figure>
-
 ## Problemet
 
 Den utbredelsen gjorde at ethvert problem sluttet å være lokalt. Systemet var ikke dårlig designet, men det hadde vokst raskere enn kvalitetskriteriene sine. Tilgjengelighetsfeil satt i basiskomponenter som brukes overalt, og ble derfor replikert i hele systemet. Én enkelt bundle tvang inn unødvendig kode selv på enkle nettsteder, og noen implementasjonsmønstre gjorde det umulig å videreutvikle uten bivirkninger.
@@ -33,19 +28,9 @@ På tilgjengelighet rettet vi beslutninger som påvirket semantikken til mye bru
 
 På ytelse gikk vi fra én enkelt bundle til modulær lasting styrt av DOM-en: en loader inspiserer siden under kjøring og laster bare komponentene den trenger. Det gir flere forespørsler, men reduserer startvekten. I gjennomsnitt gikk lastetidene ned ~500 ms.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/01.png" alt="Forsiden til uc.cl, et av nettstedene bygget på Kit Digital UC" loading="lazy" />
-  <figcaption>Forsiden til uc.cl</figcaption>
-</figure>
-
 ## Hvordan vi gjorde det uten å ødelegge noe
 
 Gitt risikoen validerte vi hver endring mot reelle Kit-implementasjoner og gikk gjennom representative scenarier før vi integrerte den. Beslutningene fulgte enkle regler: bakoverkompatibilitet som standard, små endringer som bygger seg opp, og ingen løsning som avhang av konteksten.
-
-<figure>
-  <img src="/img/projects/kit-digital-uc/03.png" alt="Bunnteksten til uc.cl, en komponent som er en del av Kit Digital UC" loading="lazy" />
-  <figcaption>Bunnteksten til uc.cl</figcaption>
-</figure>
 
 ## Rollen min
 

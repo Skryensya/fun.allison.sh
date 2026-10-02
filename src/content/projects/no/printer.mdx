@@ -14,17 +14,7 @@ Jeg hadde en billig termisk kvitteringsskriver som samlet støv på pulten. Det 
 
 Under overflaten er det et API. Du sender en POST med det du vil skrive ut (tekst, et kort, en liste, en QR-kode, et bilde), og det havner i en kø. En liten agent, som kjører på maskinen koblet til skriveren, lytter på den køen over WebSocket og styrer skriveren over USB med ESC/POS-protokollen. Oppå det finnes et dashbord for å følge køen live, sette sammen utskrifter for hånd og dele ut tilgangsnøkler.
 
-<figure>
-  <img src="/img/projects/printer-1-en.webp" alt="Ping i lyst modus: lys bakgrunn med tittelen «Send me a Ping», et valgfritt navnefelt, en skrevet melding og grensen på én ping hvert 30. minutt." loading="lazy" />
-  <figcaption>Lyst modus: én melding, én sending hvert 30. minutt</figcaption>
-</figure>
-
 Den første brukeren av det API-et er Ping, den offentlige delen. Den ligger på <a href="https://ping.allison.sh" class="editorial-link" target="_blank" rel="noopener noreferrer">ping.allison.sh<svg class="editorial-link__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z" /></svg></a>, ber ikke om konto eller nøkkel, og kaller internt det samme endepunktet som alle andre brukere. Den har sin egen nøkkel, sin egen bruksgrense, reCAPTCHA og en nedkjøling per IP for å stoppe boter. API-et vet ikke at Ping finnes: for det er Ping bare en bruker som alle andre.
-
-<figure>
-  <img src="/img/projects/printer-2-en.webp" alt="Ping i mørkt modus: det samme skjemaet på mørk bakgrunn, med den skrevne meldingen og send-knappen." loading="lazy" />
-  <figcaption>Mørkt modus, samme skjema: dag eller natt, det du sender kommer ut som en kvittering</figcaption>
-</figure>
 
 ## Tekniske valg
 

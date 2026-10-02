@@ -12,11 +12,6 @@ El Kit Digital UC fue mi primera experiencia con un sistema de diseño en produc
 
 Es una referencia entre los sistemas de diseño institucionales de Chile. Resuelve un problema concreto: mantener la coherencia visual y técnica a escala, en una organización con muchos equipos y ciclos de desarrollo desalineados. Sistemas posteriores han tomado aprendizajes de este modelo, directa o indirectamente.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/00.png" alt="Homepage del sitio de documentación del Kit Digital UC en kitdigital.uc.cl" loading="lazy" />
-  <figcaption>Sitio de documentación del Kit Digital UC — kitdigital.uc.cl</figcaption>
-</figure>
-
 ## El problema
 
 Esa adopción hacía que cualquier problema dejara de ser local. El sistema no estaba mal diseñado, pero había crecido más rápido que sus criterios de calidad. Las fallas de accesibilidad estaban en componentes base de uso transversal, así que se replicaban en todo el sistema. Un único bundle obligaba a cargar código innecesario incluso en sitios simples, y algunos patrones de implementación impedían evolucionar sin efectos colaterales.
@@ -33,19 +28,9 @@ En accesibilidad corregimos decisiones que afectaban la semántica de componente
 
 En rendimiento pasamos de un bundle único a una carga modular guiada por el DOM: un loader revisa la página en runtime y carga solo los componentes que necesita. Eso agrega requests, pero reduce el peso inicial. En promedio, los tiempos de carga bajaron ~500 ms.
 
-<figure>
-  <img src="/img/projects/kit-digital-uc/01.png" alt="Home de uc.cl, uno de los sitios construidos sobre el Kit Digital UC" loading="lazy" />
-  <figcaption>Home de uc.cl</figcaption>
-</figure>
-
 ## Cómo lo hicimos sin romper nada
 
 Dado el riesgo, validábamos cada cambio sobre implementaciones reales del Kit y revisábamos escenarios representativos antes de integrarlo. Las decisiones seguían reglas simples: compatibilidad hacia atrás por defecto, cambios pequeños y acumulativos, y ninguna solución que dependiera del contexto.
-
-<figure>
-  <img src="/img/projects/kit-digital-uc/03.png" alt="Footer de uc.cl, componente parte del Kit Digital UC" loading="lazy" />
-  <figcaption>Footer de uc.cl</figcaption>
-</figure>
 
 ## Mi rol
 
