@@ -7,12 +7,6 @@ export const localizedRoutes = {
         no: 'prosjekter',
         ja: 'projects'
     },
-    resume: {
-        es: 'curriculum',
-        en: 'resume',
-        no: 'cv',
-        ja: 'resume'
-    },
     accessibility: {
         es: 'declaracion-de-accesibilidad',
         en: 'accessibility-statement',
@@ -115,7 +109,7 @@ export function getEquivalentPage(currentPath: string, targetLang: Language): st
         return slug ? getLocalizedUrl(targetLang, 'projects', slug) : getLocalizedUrl(targetLang, 'projects');
     }
 
-    const staticRoutes: LocalizedRouteKey[] = ['resume', 'accessibility', 'designSystem', 'contentTree'];
+    const staticRoutes: LocalizedRouteKey[] = ['accessibility', 'designSystem', 'contentTree'];
 
     for (const route of staticRoutes) {
         if (pathWithoutLang === localizedRoutes[route][sourceLang]) {

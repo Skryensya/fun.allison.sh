@@ -5,10 +5,10 @@ type Lang = "es" | "en" | "no" | "ja";
 
 const LANGS: Lang[] = ["es", "en", "no", "ja"];
 const STATIC_PAGES: Record<Lang, string[]> = {
-  es: ["", "proyectos/", "curriculum/", "declaracion-de-accesibilidad/", "arbol-de-contenido/"],
-  en: ["en/", "en/projects/", "en/resume/", "en/accessibility-statement/", "en/content-tree/"],
-  no: ["no/", "no/prosjekter/", "no/cv/", "no/tilgjengelighetserklaering/", "no/innholdstre/"],
-  ja: ["ja/", "ja/projects/", "ja/resume/", "ja/accessibility-statement/", "ja/content-tree/"],
+  es: ["", "proyectos/", "declaracion-de-accesibilidad/", "arbol-de-contenido/"],
+  en: ["en/", "en/projects/", "en/accessibility-statement/", "en/content-tree/"],
+  no: ["no/", "no/prosjekter/", "no/tilgjengelighetserklaering/", "no/innholdstre/"],
+  ja: ["ja/", "ja/projects/", "ja/accessibility-statement/", "ja/content-tree/"],
 };
 
 /** Ensures siteUrl ends with '/' and joins paths cleanly */
@@ -105,7 +105,6 @@ export const GET: APIRoute = async ({ site }) => {
       function semanticKey(p: string) {
         if (p === "" || p === "en/" || p === "no/" || p === "ja/") return "root";
         if (/proyectos\/$|en\/projects\/$|no\/prosjekter\/$|ja\/projects\/$/.test(p)) return "projects";
-        if (/curriculum\/$|en\/resume\/$|no\/cv\/$|ja\/resume\/$/.test(p)) return "resume";
         if (/declaracion-de-accesibilidad\/$|en\/accessibility-statement\/$|no\/tilgjengelighetserklaering\/$|ja\/accessibility-statement\/$/.test(p))
           return "accessibility";
         if (/arbol-de-contenido\/$|en\/content-tree\/$|no\/innholdstre\/$|ja\/content-tree\/$/.test(p)) return "content-tree";
@@ -127,13 +126,6 @@ export const GET: APIRoute = async ({ site }) => {
           { lang: "en", href: joinUrl(siteUrl, "en/projects/") },
           { lang: "no", href: joinUrl(siteUrl, "no/prosjekter/") },
           { lang: "ja", href: joinUrl(siteUrl, "ja/projects/") },
-        ];
-      } else if (key === "resume") {
-        alternates = [
-          { lang: "es", href: joinUrl(siteUrl, "curriculum/") },
-          { lang: "en", href: joinUrl(siteUrl, "en/resume/") },
-          { lang: "no", href: joinUrl(siteUrl, "no/cv/") },
-          { lang: "ja", href: joinUrl(siteUrl, "ja/resume/") },
         ];
       } else if (key === "accessibility") {
         alternates = [

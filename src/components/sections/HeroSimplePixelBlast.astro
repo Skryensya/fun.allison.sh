@@ -13,10 +13,6 @@ interface Props { lang?: Language; }
 const { lang = defaultLang } = Astro.props;
 const t = getTranslations(lang);
 
-const getCVPath = (locale: Language) => {
-  if (locale === 'es') return '/curriculum.pdf';
-  return '/resume.pdf';
-};
 ---
 
 <section class="hero-section pt-2 mb-12 relative">
@@ -36,9 +32,6 @@ const getCVPath = (locale: Language) => {
         <div class="flex flex-col md:flex-row flex-wrap gap-4 md:gap-6">
           <Button href={getLocalizedUrl(lang, 'projects')}  id="projects-button">
             {t('home.heroProjectsButton')}
-          </Button>
-          <Button href={getCVPath(lang)} filled elevated target="_blank" rel="noopener noreferrer" data-haptic="confirm">
-            {t('home.cvButton')}
           </Button>
         </div>
       </div>

@@ -66,10 +66,6 @@ export const sitemapData: LanguageSitemap = {
       ]
     },
     {
-      title: 'Currículum',
-      url: '/curriculum/'
-    },
-    {
       title: 'Sistema de Diseño',
       url: '/sistema-de-diseno/'
     },
@@ -130,10 +126,6 @@ export const sitemapData: LanguageSitemap = {
           url: '/en/projects/barrancas/'
         }
       ]
-    },
-    {
-      title: 'Resume',
-      url: '/en/resume/'
     },
     {
       title: 'Design System',
@@ -198,10 +190,6 @@ export const sitemapData: LanguageSitemap = {
       ]
     },
     {
-      title: '履歴書',
-      url: '/ja/resume/'
-    },
-    {
       title: 'デザインシステム',
       url: '/ja/design-system/'
     },
@@ -262,10 +250,6 @@ export const sitemapData: LanguageSitemap = {
           url: '/no/prosjekter/barrancas/'
         }
       ]
-    },
-    {
-      title: 'CV',
-      url: '/no/cv/'
     },
     {
       title: 'Designsystem',

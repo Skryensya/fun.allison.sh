@@ -48,7 +48,7 @@ test.describe('Navbar focus and keyboard behavior', () => {
     await expect(menuTrigger).toBeVisible();
     await expect(menuTrigger).not.toHaveAttribute('aria-hidden', 'true');
 
-    const firstMobileProjectLink = page.locator('#mobile-dropdown a[href="/curriculum.pdf"]').first();
+    const firstMobileProjectLink = page.locator('#mobile-dropdown a[href="/#proyectos"]').first();
     await expect(firstMobileProjectLink).toHaveAttribute('tabindex', '-1');
 
     await menuTrigger.click();

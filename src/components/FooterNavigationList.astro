@@ -23,11 +23,6 @@ const t = getTranslations(lang);
 const linkClass = `footer-nav-link scramble-text ${inverted ? 'footer-nav-link--inverted' : ''}`;
 const iconClass = 'footer-nav-link__icon';
 
-const getCVPath = (locale: Language) => {
-  if (locale === 'es') return '/curriculum.pdf';
-  return '/resume.pdf';
-};
-
 const getHomePath = (locale: Language) => {
   if (locale === 'en') return '/en/';
   if (locale === 'no') return '/no/';
@@ -43,11 +38,6 @@ const navigationLinks: NavigationLink[] = [
   {
     href: getLocalizedUrl(lang, 'projects'),
     text: t('footer.projects')
-  },
-  {
-    href: getCVPath(lang),
-    text: t('footer.resume'),
-    isExternal: true
   },
   {
     href: getLocalizedUrl(lang, 'designSystem'),
@@ -68,9 +58,7 @@ const resolvedLinks = (links && links.length > 0) ? links : navigationLinks;
 
 <nav class={className}>
   {resolvedLinks.map((link) => {
-    const shouldHaptic =
-      link.href.startsWith('mailto:') ||
-      /\/(curriculum|resume)\.pdf(?:$|[?#])/i.test(link.href);
+    const shouldHaptic = link.href.startsWith('mailto:');
 
     return (
       <a
